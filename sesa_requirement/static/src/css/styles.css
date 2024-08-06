@@ -1,0 +1,37 @@
+.openerp .oe_kanban_view .oe_kanban_card{
+    width: 211px;
+}
+/* Define custom background colors for individual cards */
+.oe_kanban_custom_color_1 {
+    background-color: lightblue; /* Change this color as needed */
+}
+
+.oe_kanban_custom_color_2 {
+    background-color: lightgreen; /* Change this color as needed */
+}
+
+/* Add more classes and define background colors for other cards as needed */
+
+.openerp .oe_kanban_view .oe_kanban_action_button{
+        margin: 42px;
+}
+.openerp .oe_kanban_view .oe_kanban_column, .openerp .oe_kanban_view .oe_kanban_group_header {
+    vertical-align: top;
+    padding: 5px 5px 5px 10px;
+}
+.openerp .oe_kanban_view .oe_kanban_color_1 {
+    background-color: beige;
+}
+ .center-align {
+        text-align: center;
+    }
+
+body.oe_single_form {
+  background: #eee url(/sesa_requirement/static/src/img/bg.png);
+  height: 100%;
+}
+.oe_employee_picture {
+    width: 122px;
+    height: auto;
+    clip: rect(10px, 100px, 110px, 0px);
+}

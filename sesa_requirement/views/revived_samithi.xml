@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+          <record id="action_expense" model="ir.actions.act_window">
+            <field name="name">Samithi Revived</field>
+            <field name="res_model">samithi.revived</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+<!--            <field name="domain">[('event_place','=',active_id)]</field>-->
+        </record>
+
+<!--          <menuitem id="sub_submenu_revived" parent="submenu_activity" name="Revived Samithi Details" sequence="10" action="action_expense"/>-->
+    </data>
+</openerp>

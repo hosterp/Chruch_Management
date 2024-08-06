@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="report_wizard_id">
+			<field name="name">Report</field>
+			<field name="model">activity.report</field>
+			<field name="arch" type="xml">
+				<form string="Activity Report">
+					<group>
+<!--						<group>-->
+<!--							<field name="partner_id" domain="[('supplier','=',True)]" />-->
+<!--							<field name="financial_year"/>-->
+<!--						</group>-->
+						<group>
+							<field name="date_from"/>
+							<field name="date_to"/>
+						</group>
+                        <group>
+                            <field name="revived_samithi"/>
+                            <field name="event_district"/>
+                            <field name="event_place"  attrs="{'invisible': [('revived_samithi','=', True)]}"/>
+
+                        </group>
+                        <group>
+                            <field name="event_category"  widget="radio"/>
+
+                        </group>
+                        <group>
+                            <field name="event_type"/>
+                        </group>
+					</group>
+					<group>
+
+					</group>
+					<footer>
+						<button name="print_activity_report" type="object" string="Print Pdf" class="oe_highlight" />
+						<button name="print_activity_report_xlsx_report" type="object" string="Print Excel" class="oe_highlight" />
+						<button name="print_activity_report_view" type="object" string="View" class="oe_highlight" />
+						<button string="Cancel" class="oe_link" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+<!--########################################## Template ######################################################-->
+
+        <template id="activity_report_template">
+            <t t-call="report.html_container">
+                <div class="header">
+                    <img src='/sesa_requirement/static/src/img/ssso_logo.png'
+                         style="position: absolute; top: 20px; left: 120px; width: 80px; height: 80px;"/>
+                    <div style="border:4px solid black;">
+                        <center>
+                            <h2>
+                                <b>SSSSO KERALA REPORTS</b>
+                            </h2>
+                        </center>
+                        <center>
+                            <h3>
+                                <b>Aum Sree Sai Ram </b>
+                            </h3>
+                        </center>
+                        <center>
+                            <h5>
+                                <b>SSSSOINDIA, Zone – South</b>
+                            </h5>
+                        </center>
+                        <center>
+<!--                            <h4>-->
+<!--                                <b>-->
+<!--                                    <span t-esc="o.date_from"></span>-->
+<!--                                </b>-->
+<!--                            </h4>-->
+                        </center>
+                    </div>
+                </div>
+                <t t-foreach="docs" t-as="o">
+                    <div class="page">
+                        <br></br>
+                        <table class="table table-bordered" style="border:1px solid black;">
+                                <thead style="border:1px solid black;">
+                                    <tr>
+                                        <th style="border:1px solid black;">Sl No</th>
+                                        <th style="border:1px solid black;">Name</th>
+                                        <th style="border:1px solid black;">Reporting In-Charge</th>
+                                        <th style="border:1px solid black;">Event Category</th>
+                                        <th style="border:1px solid black;">Event type</th>
+                                        <th style="border:1px solid black;" >Date of event</th>
+                                        <th style="border:1px solid black;">Samithies</th>
+<!--                                        <th style="border:1px solid black;">Total Attendees</th>-->
+                                        <th style="border:1px solid black;">Total devotees attended</th>
+<!--                                        <th style="border:1px solid black;">Details</th>-->
+<!--                                        <th style="border:1px solid black;">Remark</th>-->
+                                        <th style="border:1px solid black;">Status</th>
+                                        <!-- Add other table headers here -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="sl_no" t-value="0"/>
+                                    <t t-foreach="o.get_activity_report()" t-as="line">
+                                        <tr>
+                                            <t t-set="sl_no" t-value="sl_no + 1"/>
+                                            <td style="border:1px solid black;">
+                                                <t t-esc="sl_no"/>
+                                            </td>
+
+                                            <td style="border:1px solid black;">
+                                                <t t-esc="line.user.name"/>
+                                            </td>
+                                            <td style="border:1px solid black;">
+                                                <t t-esc="line.reporting_incharge.display_name"/>
+                                            </td>
+                                            <td style="border:1px solid black;">
+                                                <t t-esc="line.event_category.display_name"/>
+                                            </td>
+                                            <td style="border:1px solid black;">
+                                                <t t-esc="line.event_type.display_name"/>
+                                            </td>
+                                            <td style="border:1px solid black;">
+                                                <t t-esc="line.date"/>
+                                            </td>
+                                            <td style="border:1px solid black;">
+                                                <t t-esc="line.event_place.display_name"/>
+                                            </td>
+<!--                                            <td style="border:1px solid black;">-->
+<!--                                                <t t-esc="line.total_attendees"/>-->
+<!--                                            </td>-->
+                                            <td style="border:1px solid black;">
+                                                <t t-esc="line.total_devotees_attended"/>
+                                            </td>
+                                              <td style="border:1px solid black;">
+                                                <t t-esc="line.state"/>
+                                            </td>
+<!--                                            <td style="border:1px solid black;">-->
+<!--                                                <t t-esc="line.desc"/>-->
+<!--                                            </td>-->
+
+<!--                                            <td style="border:1px solid black;">-->
+<!--                                                <t t-esc="line.remark"/>-->
+<!--                                            </td>-->
+
+                                        </tr>
+                                    </t>
+                                </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+<!--####################################################################################################################-->
+        <report
+                id="activity_report"
+                string="Activity Report"
+                model="activity.report"
+                report_type="qweb-pdf"
+                name="sesa_requirement.activity_report_template"/>
+
+
+        <report id="report_activity_excel_id"
+                model="activity.report"
+                string="Activity Report Excel"
+                report_type="xlsx"
+                name="sesa_requirement.activity_report_template_xlsx.xlsx"
+                file="sesa_requirement.activity_report_template_xlsx.xlsx"
+                attachment_use="False"/>
+
+        <record id="action_activity_report" model="ir.actions.act_window">
+            <field name="name">Activity Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">activity.report</field>
+            <field name="target">new</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+              <field name="view_id" ref="report_wizard_id"/>
+        </record>
+
+
+
+        <menuitem id="menu_activity_report" name="Report" sequence="99"/>
+        <menuitem id="submenu_activity_report" parent="menu_activity_report" name="Activity Report" sequence="99"/>
+        <menuitem id="sub_activity_report" parent="submenu_activity_report" name="Reports" sequence="99" action="action_activity_report"/>
+<!--        <menuitem id="samithi_details_report" parent="submenu_activity_report" name="Samithi Details" sequence="100" action="action_samithi_details_report"/>-->
+<!--        <menuitem id="bhajan_madali_details_report" parent="submenu_activity_report" name="Bhajan Mandali Details" sequence="101" action="action_bhajan_mandali_details_report"/>-->
+
+    </data>
+</openerp>

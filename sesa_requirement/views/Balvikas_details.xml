@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+    <data>
+        <!-- Custom Form View -->
+        <record id="form_event_balvikas" model="ir.ui.view">
+            <field name="name">Balvikas Form View</field>
+            <field name="model">event.balvikas</field>
+            <field name="arch" type="xml">
+                <form string="Balvikas Details">
+
+<!--                    <header>-->
+<!--                        <button name="print_activity_balvikas_details_report" string="Print" type="object"/>-->
+<!--                    </header>-->
+                    <sheet>
+                        <group col="5">
+                            <group>
+                                <field name="date" style="width:50%"/>
+                                <field name="balvikas_centers" style="width:50%"/>
+                                <field name="new_balvikas" style="width:50%"/>
+                            </group>
+                            <group>
+                                <field name="total_students"/>
+                                <field name="total_guru"/>
+                            </group>
+                            <group>
+                                <!-- Additional fields or groups can be added here -->
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action Window with a new ID -->
+        <record id="action_balvikas_activity_new" model="ir.actions.act_window">
+            <field name="name">Balvikas Details</field>
+            <field name="res_model">event.balvikas</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_tree_balvikas"/>
+        </record>
+
+        <!-- Tree View -->
+        <record id="view_tree_balvikas" model="ir.ui.view">
+            <field name="name">Balvikas Tree View</field>
+            <field name="model">event.balvikas</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date"/>
+                    <field name="balvikas_centers" string="Balviksa centers"/>
+                    <field name="total_students" string="Total Students"/>
+                    <field name="total_guru" string="No of Gurus"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Menu Item -->
+<!--        <menuitem id="sub_balvikas_activity" parent="submenu_activity" name="Balvikas Details" sequence="4"-->
+<!--                  action="action_balvikas_activity_new"/>-->
+    </data>
+</openerp>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="centenary_report_details_wizard_id">
+            <field name="name">Centenary Report wizard</field>
+            <field name="model">centenary.report</field>
+            <field name="arch" type="xml">
+                <form string="Centenary Report">
+                    <group>
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>
+                        <group>
+
+                            <field name="Category"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="print_activity_centenary_report" type="object" string="Print Pdf"
+                                class="oe_highlight"/>
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <!--**************************************************************************************************************************************        -->
+
+        <template id="activity_centenary_report_template">
+            <t t-call="report.html_container">
+                <div class="header">
+                    <img src='/sesa_requirement/static/src/img/ssso_logo.png'
+                         style="position: absolute; top: 20px; left: 20px; width: 100px; height: 80px;"/>
+                    <div style="border:4px solid black;">
+                        <center>
+                            <h3>
+                                <b>Aum Sai Ram Ram</b>
+                            </h3>
+                        </center>
+                        <center>
+                            <h4>
+                                <b>List of Coordinating Members - Centenary Celebrations</b>
+                            </h4>
+                        </center>
+                        <center>
+                            <h5>
+                                <b>State-Kerala</b>
+                            </h5>
+                        </center>
+                        <center>
+                            <!--                                    <h4>-->
+                            <!--                                        <b>ACTIVITY REPORT</b>-->
+                            <!--                                    </h4>-->
+                        </center>
+                    </div>
+                </div>
+                <t t-foreach="docs" t-as="o">
+                    <div class="page">
+                        <br></br>
+                        <t t-if="o.Category">
+                            <h4 t-esc="o.Category.name" style="margin-top:20px;"/>
+                            <table class="table table-bordered" style="border:1px solid black;">
+                                <thead>
+                                    <tr>
+                                        <th>Sl No</th>
+                                        <th>Date</th>
+                                        <th>Name</th>
+                                        <th>Saiconnect ID</th>
+                                        <th>Mobile No</th>
+                                        <th>Email SI</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="sl_no" t-value="0"/>
+                                    <t t-foreach="o.get_centenary_report()" t-as="line">
+                                        <tr>
+                                            <t t-set="sl_no" t-value="sl_no + 1"/>
+                                            <td style="border:1px solid black;">
+                                                <t t-esc="sl_no"/>
+                                            </td>
+                                            <td style="border:1px solid black;">
+                                                <t t-esc="line['date'][8:10] + '-' + line['date'][5:7] + '-' + line['date'][0:4]"/>
+                                            </td>
+                                            <td style="border:1px solid black;">
+                                                <t t-esc="line.name"/>
+                                            </td>
+                                            <td style="border:1px solid black;">
+                                                <t t-esc="line.connect_id"/>
+                                            </td>
+                                            <td style="border:1px solid black;">
+                                                <t t-esc="line.phone"/>
+                                            </td>
+                                            <td style="border:1px solid black;">
+                                                <t t-esc="line.email"/>
+                                            </td>
+
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </t>
+                        <t t-if="not o.Category">
+                            <!-- Iterate over each category if no specific category is selected -->
+                            <t t-foreach="o.get_data_by_category().items()" t-as="data">
+                                <!-- Display category name as a heading -->
+                                <strong>
+                                    <h4 t-esc="data[0].name" style="margin-top:20px;"/>
+                                </strong>
+
+                                <!-- Table for the current category -->
+                                <table class="table table-bordered" style="border:1px solid black;">
+                                    <thead>
+                                        <tr>
+                                            <th>Sl No</th>
+                                            <th>Date</th>
+                                            <th>Name</th>
+                                            <th>Saiconnect ID</th>
+                                            <th>Mobile No</th>
+                                            <th>Email SI</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Initialize serial number -->
+                                        <t t-set="sl_no" t-value="0"/>
+
+                                        <!-- Iterate over the report lines for the current category -->
+                                        <t t-foreach="data[1]" t-as="line">
+                                            <tr>
+                                                <!-- Increment serial number -->
+                                                <t t-set="sl_no" t-value="sl_no + 1"/>
+                                                <td style="border:1px solid black;">
+                                                    <t t-esc="sl_no"/>
+                                                </td>
+                                                <td style="border:1px solid black;">
+                                                    <t t-esc="line['date'][8:10] + '-' + line['date'][5:7] + '-' + line['date'][0:4]"/>
+                                                </td>
+                                                <td style="border:1px solid black;">
+                                                    <t t-esc="line.name"/>
+                                                </td>
+                                                <td style="border:1px solid black;">
+                                                    <t t-esc="line.connect_id"/>
+                                                </td>
+                                                <td style="border:1px solid black;">
+                                                    <t t-esc="line.phone"/>
+                                                </td>
+                                                <td style="border:1px solid black;">
+                                                    <t t-esc="line.email"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </t>
+                        </t>
+
+                    </div>
+                </t>
+                <!--                </t>-->
+            </t>
+        </template>
+        <!--***********************************************************************************************************************************************************        -->
+
+        <report
+                id="activity_centenary_report"
+                string="Centenary Report"
+                model="centenary.report"
+                report_type="qweb-pdf"
+                name="sesa_requirement.activity_centenary_report_template"/>
+
+        <record id="action_centenary_report" model="ir.actions.act_window">
+            <field name="name">Centenary Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">centenary.report</field>
+            <field name="target">new</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="centenary_report_details_wizard_id"/>
+        </record>
+        <menuitem id="centenary_report" parent="submenu_activity_report" name="Centenary Report" sequence="101"
+                  action="action_centenary_report"/>
+    </data>
+</openerp>

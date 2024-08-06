@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+    <data>
+        <record id="form_event_event_centenary" model="ir.ui.view">
+            <field name="name">Form for centenary celebration</field>
+            <field name="model">centenary.form</field>
+            <field name="arch" type="xml">
+                <form string="Centenary Celebration" create="1">
+                    <header>
+                        <!--                        <button name="action_completed" states="draft" string="Completed"-->
+                        <!--                                type="object" class="oe_highlight"/>-->
+                        <!--                        <button name="action_cancel" states="draft" string="Cancel"-->
+                        <!--                                type="object" class="oe_highlight"/>-->
+                        <!--                        <field name="state" widget="statusbar"-->
+                        <!--                               statusbar_colors='{"completed":"green","cancel":"red"}' readonly="1"/>-->
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="connect_id" string="Family Number"/>
+
+
+                                <!--                                <field name="event_category" widget="radio"/>-->
+
+                                <field name="Category"/>
+
+                            </group>
+                            <group>
+                                <field name="phone"/>
+                                <field name="email"/>
+
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tree_event_view_centenary_celebration" model="ir.ui.view">
+            <field name="name">Tree model for centenary</field>
+            <field name="model">centenary.form</field>
+            <field name="arch" type="xml">
+                <tree create="1">
+                    <field name="date"/>
+                    <field name="name"/>
+                    <field name="connect_id" string="Family Number"/>
+                    <field name="Category"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="action_activity_centenary_form" model="ir.actions.act_window">
+            <field name="name">Edavaka Registration Form</field>
+            <field name="res_model">centenary.form</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+             <field name="domain">[('Category','=',active_id)]</field>
+            <field name="view_id" ref="tree_event_view_centenary_celebration"/>
+        </record>
+
+    </data>
+</openerp>

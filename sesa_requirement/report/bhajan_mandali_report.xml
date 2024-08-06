@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+    <data>
+         <record model="ir.ui.view" id="bhajan_mandali_details_wizard_id">
+            <field name="name">Samithi Details</field>
+            <field name="model">bhajan.mandali.details</field>
+            <field name="arch" type="xml">
+                <form string="Bhajan Mandali Details Report">
+                    <group>
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>
+<!--                        <group>-->
+
+<!--                            <field name="event_district"/>-->
+<!--                        </group>-->
+                    </group>
+                    <footer>
+                        <button  name="print_activity_bhajan_mandali_details_report" type="object" string="Print Pdf"
+                                class="oe_highlight"/>
+                        <button type="object" string="Print Excel"
+                                class="oe_highlight"/>
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+<!--.............................................  Template......................................................-->
+
+        <template id="activity_bhajan_mandali_details_report_template">
+            <t t-call="report.html_container">
+            <div class="header">
+                <img src='/sesa_requirement/static/src/img/ssso_logo.png'
+                     style="position: absolute; top: 20px; left: 20px; width: 100px; height: 80px;"/>
+                <div style="border:4px solid black;">
+                    <center>
+                        <h2>
+                            <b>SSSSO KERALA REPORTS</b>
+                        </h2>
+                    </center>
+                    <center>
+                        <h3>
+                            <b>Aum Sai Ram Ram</b>
+                        </h3>
+                    </center>
+                    <center>
+                        <h5>
+                            <b>SSSSOINDIA, Zone – South</b>
+                        </h5>
+                    </center>
+                    <center>
+                        <!--                                    <h4>-->
+                        <!--                                        <b>ACTIVITY REPORT</b>-->
+                        <!--                                    </h4>-->
+                    </center>
+                </div>
+            </div>
+            <t t-foreach="docs" t-as="o">
+            <div class="page">
+            <br></br>
+            </div>
+            </t>
+            </t>
+        </template>
+        <!--.............................................  Template......................................................-->
+
+          <report
+                id="activity_bhajan_mandali_details_report"
+                string="Bhajan Mandali Details Report"
+                model="bhajan.mandali.details"
+                report_type="qweb-pdf"
+                name="sesa_requirement.activity_bhajan_mandali_details_report_template"/>
+
+
+
+         <record id="action_bhajan_mandali_details_report" model="ir.actions.act_window">
+            <field name="name">Bhajan Mandali Details Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">bhajan.mandali.details</field>
+            <field name="target">new</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="bhajan_mandali_details_wizard_id"/>
+        </record>
+    </data>
+</openerp>

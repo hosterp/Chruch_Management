@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="form_event_event" model="ir.ui.view">
+            <field name="name">Form for event</field>
+            <field name="model">event.event</field>
+            <field name="arch" type="xml">
+
+                <form string="Event">
+                    <header>
+                        <button name="action_completed" states="draft" string="Completed"
+                                type="object" class="oe_highlight"/>
+                        <button name="action_cancel" states="draft" string="Cancel"
+                                type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_colors='{"completed":"green","cancel":"red"}' readonly="1"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="user"/>
+                                <field name="reporting_incharge"/>
+                                <field name="event_category" widget="radio"/>
+                                <!--                                <field name="event_category"/>-->
+                                <field name="event_type"/>
+                            </group>
+                            <group>
+                                <field name="attachment" widget="many2many_binary" string="Attachment(s)"/>
+                                <field name="date"/>
+                                <field name="event_place"/>
+                                <field name="total_attendees"/>
+                                <field name="total_devotees_attended"/>
+                            </group>
+                            <!--                            <field name="advance" />-->
+                            <!--                        </group>-->
+                            <!--                        <group>-->
+                            <!--                            <group>-->
+                            <!--                                <field name="expense" />-->
+                            <!--                            </group>-->
+                            <!--                            <group>-->
+                            <!--                                <field name="rem_expense" />-->
+                            <!--                            </group>-->
+                        </group>
+                        <group>
+                            <!--                            <field name="balance" />-->
+                            <field name="desc"/>
+                            <field name="remark"/>
+                        </group>
+                        <group>
+                            <!--                            <field name="attachment" widget="many2many_binary" string="Attachment(s)"/>-->
+                            <!--                            <label class="col-form-label" for="attachment">Attachment(s)</label>-->
+                            <!--&lt;!&ndash;                            <field name="attachment"/>&ndash;&gt;-->
+                            <!--                                <input type="file" name="attachment" multiple="true"-->
+                            <!--                                       accept="image/*,application/pdf,video/*"/>-->
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="search_med_lot_filter">
+            <field name="name">Event Filter Search</field>
+            <field name="model">event.event</field>
+            <field name="arch" type="xml">
+                <search string="Event Filter">
+                    <field name="event_district"/>
+                    <group expand="0" string="Group By">
+                        <filter string="District" icon="terp-accessories-archiver" domain="[]"
+                                context="{'group_by':'event_district'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="tree_event_view" model="ir.ui.view">
+            <field name="name">Tree model for event</field>
+            <field name="model">event.event</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <tree fg_color="green:state == 'completed'" search_view_id="search_med_lot_filter">
+                    <field name="date"/>
+                    <field name="event_district"/>
+                    <field name="event_place" string="Samithies"/>
+                    <field name="event_category"/>
+                    <field name="event_type"/>
+                    <field name="reporting_incharge"/>
+                    <field name="total_attendees" invisible="1"/>
+                    <field name="total_devotees_attended"/>
+                    <field name="user"/>
+                    <field name="state"/>
+                    <!-- Other fields -->
+                </tree>
+            </field>
+        </record>
+        <record id="tree_event_view_id" model="ir.ui.view">
+            <field name="name">Tree model for event</field>
+            <field name="model">event.event</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <tree create="0" fg_color="green:state == 'completed'" search_view_id="search_med_lot_filter">
+                    <field name="date"/>
+                    <field name="event_district"/>
+                    <field name="event_place" string="Samithies"/>
+                    <field name="event_category"/>
+                    <field name="event_type"/>
+                    <field name="reporting_incharge"/>
+                    <field name="total_attendees" invisible="1"/>
+                    <field name="total_devotees_attended"/>
+                    <field name="user"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="search_event_view" model="ir.ui.view">
+            <field name="name">search model for event</field>
+            <field name="model">event.event</field>
+            <field name="arch" type="xml">
+                <search string="Search Event">
+                    <field name="event_place"/>
+                    <field name="date"/>
+                    <field name="event_category"/>
+                    <field name="state"/>
+                    <group expand="0" string="Group By">
+                        <filter name="filter_by_state" string="Status" context="{'group_by':'state'}"/>
+                        <filter name="filter_by_place" string="Place" context="{'group_by':'event_place'}"/>
+                        <filter name="filter_by_date" string="Date" context="{'group_by':'date'}"/>
+                        <filter name="filter_by_event" string="Event" context="{'group_by':'event_category'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_event" model="ir.actions.act_window">
+            <field name="name">Event</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">event.event</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="view_id" ref="tree_event_view_id"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a request for quotation.
+                </p>
+                <p>
+                    The quotation contains the history of the discussion/negotiation
+                    you had with your supplier. Once confirmed, a request for
+                    quotation
+                    is converted into a purchase order.
+                </p>
+                <p>
+                    Most propositions of purchase orders are created automatically
+                    by
+                    based on inventory needs.
+                </p>
+            </field>
+        </record>
+
+        <record id="action_event_id" model="ir.actions.act_window">
+            <field name="name">Event</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">event.event</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="view_id" ref="tree_event_view"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a request for quotation.
+                </p>
+                <p>
+                    The quotation contains the history of the discussion/negotiation
+                    you had with your supplier. Once confirmed, a request for
+                    quotation
+                    is converted into a purchase order.
+                </p>
+                <p>
+                    Most propositions of purchase orders are created automatically
+                    by
+                    based on inventory needs.
+                </p>
+            </field>
+        </record>
+
+
+        <!-- <record id="action_activity" model="ir.actions.act_window">
+            <field name="name">Event</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">event.event</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a request for quotation.
+                </p>
+                <p>
+                    The quotation contains the history of the discussion/negotiation
+                    you had with your supplier. Once confirmed, a request for
+                    quotation
+                    is converted into a purchase order.
+                </p>
+                <p>
+                    Most propositions of purchase orders are created automatically
+                    by
+                     based on inventory needs.
+                </p>
+            </field>
+        </record> -->
+
+        <record id="tree_event_view_only" model="ir.ui.view">
+            <field name="name">Tree model for event</field>
+            <field name="model">event.event</field>
+            <field name="priority">30</field>
+            <field name="arch" type="xml">
+                <tree fg_color="green:state == 'completed'" create="0">
+
+                    <field name="user"/>
+                    <field name="reporting_incharge"/>
+                    <field name="event_category"/>
+                    <field name="event_type"/>
+                    <field name="date"/>
+                    <field name="event_place"/>
+                    <field name="total_attendees"/>
+                    <field name="total_devotees_attended"/>
+                    <!--                    <field name="advance" />-->
+                    <!--                    <field name="expense" />-->
+                    <!--                    <field name="rem_expense" />-->
+                    <!--                    <field name="balance" />-->
+                    <field name="desc"/>
+                    <field name="remark"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="form_event_event_view" model="ir.ui.view">
+            <field name="name">Form for event</field>
+            <field name="model">event.event</field>
+            <field name="arch" type="xml">
+                <form string="Event" create="0">
+                    <header>
+                        <button name="action_completed" states="draft" string="Completed"
+                                type="object" class="oe_highlight"/>
+                        <button name="action_cancel" states="draft" string="Cancel"
+                                type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_colors='{"completed":"green","cancel":"red"}' readonly="1"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="user"/>
+                                <field name="event_category" widget="radio"/>
+
+
+                                <!--                                <field name="event_category" widget="radio"/>-->
+
+
+                                <field name="contact_details" string="Phone Number"/>
+                            </group>
+                            <group>
+                                <field name="reporting_incharge"/>
+                                <field name="event_type"/>
+                                <field name="event_district"/>
+                                <field name="event_place" string="Samithi"/>
+                                <field name="total_attendees" invisible="1"/>
+                                <field name="attachment" widget="many2many_binary" string="Attachment(s)"/>
+                                <!--                                  <group><field name="time"></field></group>-->
+                            </group>
+
+
+                            <!--                            <field name="advance" />-->
+                            <!--                        </group>-->
+                            <!--                        <group>-->
+                            <!--                            <group>-->
+                            <!--                                <field name="expense" />-->
+                            <!--                            </group>-->
+                            <!--                            <group>-->
+                            <!--                                <field name="rem_expense" />-->
+                            <!--                            </group>-->
+                        </group>
+                        <group col="3">
+                            <group>
+                                <field name="male"/>
+                            </group>
+                            <group>
+                                <field name="female"/>
+                            </group>
+                            <group>
+                                <field name="youth"/>
+                            </group>
+                        </group>
+
+                        <group>
+                            <field name="total_devotees_attended"/>
+                            <field name="revived_samithi"/>
+                            <field name="guru" string="Guru"
+                                   attrs="{'invisible': [('event_category', '!=', 'balvikas')]}"/>
+                        </group>
+                        <group>
+                            <!--                            <field name="balance" />-->
+                            <field name="desc"/>
+                            <field name="remark"/>
+                        </group>
+                        <group>
+                            <!--                            <field name="attachment" widget="many2many_binary" string="Attachment(s)"/>-->
+                            <!--                            <label class="col-form-label" for="attachment">Attachment(s)</label>-->
+                            <!--&lt;!&ndash;                            <field name="attachment"/>&ndash;&gt;-->
+                            <!--                                <input type="file" name="attachment" multiple="true"-->
+                            <!--                                       accept="image/*,application/pdf,video/*"/>-->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_activity" model="ir.actions.act_window">
+            <field name="name">Events</field>
+            <field name="res_model">event.event</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="domain">[('event_place','=',active_id)]</field>
+            <field name="view_id" ref="tree_event_view_only"/>
+        </record>
+
+        <record id="form_event_expense" model="ir.ui.view">
+            <field name="name">Event Expense Form View</field>
+            <field name="model">event.expense</field>
+            <field name="arch" type="xml">
+                <form string="Event Expense">
+                    <header>
+                        <field name="state" widget="statusbar"
+                               statusbar_colors='{"paid":"green"}' readonly="1"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <!--                                <field name="event_category" widget="radio"/>-->
+                                <field name="event_category" widget="radio"/>
+                                <field name="event_type"/>
+                            </group>
+                            <group>
+
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <!--                                <field name="advance" />-->
+                                <!--                                <field name="expense" />-->
+                                <!--                                <field name="balance" />-->
+                            </group>
+                            <group>
+                                <!--                                <field name="rem_expense" />-->
+                            </group>
+                        </group>
+                        <group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_tree_event_expense" model="ir.ui.view">
+            <field name="name">Expense Tree View</field>
+            <field name="model">event.expense</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="event"/>
+                    <!--                    <field name="advance" />-->
+                    <!--                    <field name="expense" />-->
+                    <!--                    <field name="rem_expense" />-->
+                    <!--                    <field name="balance" />-->
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_expense" model="ir.actions.act_window">
+            <field name="name">Event Expenses</field>
+            <field name="res_model">event.expense</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--            <field name="domain">[('event_place','=',active_id)]</field>-->
+        </record>
+
+        <record id="form_event_event" model="ir.ui.view">
+            <field name="name">Form for event</field>
+            <field name="model">event.type</field>
+            <field name="arch" type="xml">
+                <form string="Event">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="event_type" required="1"/>
+                            </group>
+                            <group>
+                                <field name="event_category" widget="selection" required="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <menuitem id="menu_activity" name="Activity" sequence="2"/>
+        <menuitem id="submenu_activity" parent="menu_activity" name="Activity" sequence="2"/>
+        <menuitem id="sub_submenu_event" parent="submenu_activity" name="All Event Details" sequence="2"
+                  action="action_event"/>
+        <menuitem id="sub_submenu_event_activity" parent="submenu_activity" name="Activity" sequence="2"
+                  action="action_event_id"/>
+
+
+        <!--        <menuitem id="sub_submenu_reports" parent="submenu_activity" name="Reports" sequence="4" action="action_expense"/>-->
+        <!--	-->
+    </data>
+</openerp>

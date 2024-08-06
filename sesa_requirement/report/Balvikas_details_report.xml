@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+    <data>
+        <template id="activity_balvikas_details_report_template">
+            <t t-call="report.html_container">
+                <div class="header">
+                    <img src='/sesa_requirement/static/src/img/ssso_logo.png'
+                         style="position: absolute; top: 20px; left: 20px; width: 100px; height: 80px;"/>
+                    <div style="border:4px solid black;">
+                        <center>
+                            <h2>
+                                <b>SSSSO KERALA REPORTS</b>
+                            </h2>
+                        </center>
+                        <center>
+                            <h3>
+                                <b>Aum Sai Ram Ram</b>
+                            </h3>
+                        </center>
+                        <center>
+                            <h5>
+                                <b>SSSSOINDIA, Zone – South</b>
+                            </h5>
+                        </center>
+                        <center>
+                            <!--                                    <h4>-->
+                            <!--                                        <b>ACTIVITY REPORT</b>-->
+                            <!--                                    </h4>-->
+                        </center>
+                    </div>
+                    <style>
+                        table, th, td {
+
+                        border-collapse: collapse;
+
+                        }
+                        th, td {
+                        padding: 17px;
+                        text-align: left;
+                        }
+                    </style>
+                </div>
+<!--                <t t-foreach="docs" t-as="o">-->
+<!--                    <div class="page">-->
+<!--                        <div class="left-aligned-div">-->
+<!--                            <div t-if="o.date">-->
+<!--                                <strong>Date:</strong>-->
+<!--                                <span t-field="o.date"/>-->
+<!--                            </div>-->
+<!--                            <div t-if="o.events_planned">-->
+<!--                                <strong>Programs/Events Planned:</strong>-->
+<!--                                <span t-field="o.events_planned"/>-->
+<!--                            </div>-->
+<!--                            <div t-if="o.no_monthily_meeting">-->
+<!--                                <strong>Monthly Meetings:</strong>-->
+<!--                                <span t-field="o.no_monthily_meeting"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="right-aligned-div">-->
+<!--                            <div t-if="o.no_family">-->
+<!--                                <strong>No. of Families Attend Family Narayana Seva:</strong>-->
+<!--                                <span t-field="o.no_family"/>-->
+<!--                            </div>-->
+<!--                            <div t-if="o.no_saplings">-->
+<!--                                <strong>No. of Saplings Planted (Prematharu):</strong>-->
+<!--                                <span t-field="o.no_saplings"/>-->
+<!--                            </div>-->
+<!--                            <div t-if="o.missing_activities">-->
+<!--                                <strong>Missing Activities:</strong>-->
+<!--                                <span t-field="o.missing_activities"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </t>-->
+            </t>
+        </template>
+
+        <report
+                id="activity_balvikas_details_report"
+                string="Balvikas Details Report"
+                model="event.balvikas"
+                report_type="qweb-pdf"
+                name="sesa_requirement.activity_balvikas_details_report_template"/>
+
+    </data>
+</openerp>

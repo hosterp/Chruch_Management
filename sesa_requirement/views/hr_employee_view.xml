@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_employee_form_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='oe_title']" position="replace">
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="event_district" string="District"/>
+                            <field name="event_place" string="Place"/>
+                            <field name="work_phone" string="Mobile No"/>
+                            <field name="mobile_phone" string="Alternative Mobile No" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="work_email" widget="email" string="Email ID"/>
+                            <field name="position" string=" Position"/>
+                            <field name="aadhar_no" invisible="1"/>
+                        </group>
+                    </group>
+                    <field name="notes" string="Remarks"/>
+                </xpath>
+                <xpath expr="//page[@string='Public Information']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <!--                <xpath expr="//page[@string='Public Information']" position="replace">-->
+                <!--                    <page string="Public Information">-->
+                <!--                            <group>-->
+                <!--                                <group string="Contact Information">-->
+                <!--                                    <field name="address_id" on_change="onchange_address_id(address_id)"-->
+                <!--                                        context="{'show_address': 1, 'default_customer': False}"-->
+                <!--                                        options='{"always_reload": True, "highlight_first_line": True}' string="Present address"/>-->
+                <!--                                    <label for="street" string="Address"/>-->
+                <!--                                    <div>-->
+                <!--                                        <field name="street" placeholder="Street..."  />-->
+                <!--                                        <field name="street2" />-->
+                <!--                                        <div class="address_format">-->
+                <!--                                            <field name="city" placeholder="City" style="width: 40%%" />-->
+                <!--                                            <field name="state_id" class="oe_no_button" placeholder="State" style="width: 37%%" options='{"no_open": True}' />-->
+                <!--                                            <field name="zip" placeholder="ZIP" style="width: 20%%" />-->
+                <!--                                        </div>-->
+                <!--                                        <field name="country_id" placeholder="Country" class="oe_no_button" options='{"no_open": True, "no_create": True}' />-->
+                <!--                                    </div>-->
+                <!--&lt;!&ndash;                                    <field name="mobile_phone"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;                                    <field name="work_location"/>&ndash;&gt;-->
+                <!--                                </group>-->
+                <!--                                <group>-->
+
+                <!--                                </group>-->
+                <!--                                <group>-->
+                <!--                                    <field name="company_id" groups="base.group_multi_company" on_change="onchange_company(company_id)"/>-->
+                <!--                                    <field name="user_id" on_change="onchange_user(user_id)" string="Related User"-->
+                <!--                                        context="{'default_groups_ref': ['base.group_user']}"/>-->
+                <!--                                </group>-->
+                <!--                            </group>-->
+                <!--                                <label for="notes" string="Remarks"/>-->
+                <!--                              -->
+                <!--                            </page>-->
+
+                <!--                </xpath>-->
+                <xpath expr="//page[@string='Personal Information']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <xpath expr="//page[@string='HR Settings']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="search_med_lot_filter_devotees">
+            <field name="name">Devotees Filter Search</field>
+            <field name="model">hr.employee</field>
+            <field name="arch" type="xml">
+                <search string="Devotees Filter">
+                    <field name="event_district" string="District"/>
+                    <group expand="0" string="Group By">
+                        <filter string="District" icon="terp-accessories-archiver" domain="[]"
+                                context="{'group_by':'event_district'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_employee_tree_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.tree</field>
+            <field name="model">hr.employee</field>
+            <field name="arch" type="xml">
+                <tree search_view_id="search_med_lot_filter_devotees">
+                    <field name="name"/>
+                    <field name="event_district" string="District" group_operator="count"/>
+                    <field name="event_place" string="Place"/>
+                    <field name="work_phone" string="Mobile No"/>
+                    <field name="work_email" widget="email" string="Email ID"/>
+                    <field name="position" string="Position"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="hr.hr_kanban_view_employees">
+            <field name="name">HR - Employess Kanban</field>
+            <field name="model">hr.employee</field>
+            <field name="priority">10</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="event_district">
+                    <field name="last_login"/>
+                    <field name="message_is_follower"/>
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                    <field name="event_district"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_employee_vignette">
+                                <div class="oe_employee_image">
+                                    <a type="open">
+                                        <img t-att-src="kanban_image('hr.employee', 'image_medium', record.id.value)"
+                                             class="oe_employee_picture"/>
+                                    </a>
+                                </div>
+                                <div class="oe_employee_details">
+                                    <h4>
+                                        <a type="open">
+                                            <field name="name"/>
+                                            <t t-if="record.login.raw_value">(<field name="login"/>)
+                                            </t>
+                                        </a>
+                                    </h4>
+                                    <ul>
+                                        <li id="last_login">
+                                            <span t-if="record.last_login.raw_value &amp;&amp; record.last_login.raw_value.is().today()"
+                                                  class="oe_kanban_button" style="font-size: 100%%">
+                                                <t t-esc="record.last_login.raw_value.toString('HH:mm')"/>
+                                            </span>
+                                        </li>
+                                        <li t-if="record.job_id.raw_value">
+                                            <field name="job_id"/>
+                                        </li>
+                                        <field name="event_district"/>
+                                        <li t-if="record.work_location.raw_value">
+                                            <field name="work_location"/>
+                                        </li>
+                                        <li t-if="record.work_email.raw_value">
+                                            <a t-attf-href="mailto:#{record.work_email.value}">
+                                                <field name="work_email"/>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="oe_kanban_footer_left">
+                                        <span title='Messages'>
+                                            <span class='oe_e'>9</span>
+                                            <t t-esc="record.message_ids.raw_value.length"/>
+                                        </span>
+                                        <span title='Followers'>
+                                            <span class='oe_e'>+</span>
+                                            <t t-esc="record.message_follower_ids.raw_value.length"/>
+                                        </span>
+                                    </div>
+                                    <div class="oe_followers" groups="base.group_user">
+                                        <button t-if="record.message_is_follower.raw_value" name="action_unfollow"
+                                                type="object" class="oe_follower oe_following">
+                                            <span class="oe_unfollow">Unfollow</span>
+                                            <span class="oe_following">Following</span>
+                                        </button>
+                                        <button t-if="! record.message_is_follower.raw_value" name="action_follow"
+                                                type="object" class="oe_follower oe_notfollow">Follow
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                $('.oe_employee_picture').load(function() { if($(this).width() > $(this).height()) {
+                                $(this).addClass('oe_employee_picture_wide') } });
+                            </script>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="hr.open_view_employee_list_my" model="ir.actions.act_window">
+            <field name="name">Devotees</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" ref="view_employee_tree_inherit"/>
+            <field name="search_view_id" ref="search_med_lot_filter_devotees"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a new employee.
+                </p>
+                <p>
+                    With just a quick glance on the Odoo employee screen, you
+                    can easily find all the information you need for each person;
+                    contact data, job position, availability, etc.
+                </p>
+            </field>
+        </record>
+
+
+         <record model="ir.ui.view" id="search_med_lot_filter_devotees_samithies">
+            <field name="name">Devotees Filter Search</field>
+            <field name="model">hr.employee</field>
+            <field name="arch" type="xml">
+                <search string="samithies Filter">
+                    <field name="event_place" string="Place"/>
+                     <field name="event_district" string="District"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Place" icon="terp-accessories-archiver" domain="[]"
+                                context="{'group_by':'event_place'}"/>
+                         <filter string="District" icon="terp-accessories-archiver" domain="[]"
+                                context="{'group_by':'event_district'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="hr.open_view_employee_list_my_tree" model="ir.actions.act_window">
+            <field name="name">Samithies Data</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" ref="view_employee_tree_inherit"/>
+            <field name="search_view_id" ref="search_med_lot_filter_devotees_samithies"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a new employee.
+                </p>
+                <p>
+                    With just a quick glance on the Odoo employee screen, you
+                    can easily find all the information you need for each person;
+                    contact data, job position, availability, etc.
+                </p>
+            </field>
+        </record>
+
+        <menuitem action="hr.open_view_employee_list_my_tree" id="hr.menu_open_view_employee_list_my_tree" sequence="3"
+                  parent="hr.menu_hr_main" name="Samithi Wise Data"/>
+
+    </data>
+</openerp>
