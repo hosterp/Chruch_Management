@@ -15,14 +15,17 @@
                         <!--                               statusbar_colors='{"completed":"green","cancel":"red"}' readonly="1"/>-->
                     </header>
                     <sheet>
+                         <field name="image_field" widget='image' class="oe_left oe_avatar" attrs="{'invisible': [('death_bool','!=', True)]}"/>
                         <group col="2">
                             <group>
-                                <field name="date"/>
+                                <field name="date" attrs="{'invisible': [('death_bool','=', True)]}"/>
+                                <field name="name_death_register" attrs="{'invisible': [('death_bool','!=', True)]}"/>
                             </group>
                             <group>
                                 <field name="Category"/>
                                 <field name="baptism_bool" invisible="1"/>
                                 <field name="marrage_bool" invisible="1"/>
+                                <field name="death_bool" invisible="1"/>
                             </group>
 
                         </group>
@@ -48,6 +51,10 @@
                                 <field name="certificate_vicar" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
                                 <field name="place" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
                                 <field name="time_date" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
+                                <field name="date_of_birth_death_register" attrs="{'invisible': [('death_bool','!=', True)]}"/>
+                                <field name="parish_death_register" attrs="{'invisible': [('death_bool','!=', True)]}"/>
+                                <field name="children_death_register" attrs="{'invisible': [('death_bool','!=', True)]}"/>
+
 
 
                                 <!--                                <field name="event_category" widget="radio"/>-->
@@ -74,7 +81,9 @@
                                 <field name="holycommunion_before" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
                                 <field name="certificate_vicar" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
                                 <field name="place" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
-
+                                 <field name="date_of_death_register" attrs="{'invisible': [('death_bool','!=', True)]}"/>
+                                 <field name="spouses_death_register" attrs="{'invisible': [('death_bool','!=', True)]}"/>
+                                 <field name="funeral_date_time" attrs="{'invisible': [('death_bool','!=', True)]}"/>
                             </group>
                         </group>
                         <!--                        <notebook>-->

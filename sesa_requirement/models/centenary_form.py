@@ -39,6 +39,15 @@ class CentenaryForm(models.Model):
     place = fields.Char('Place where the marriage is to be conducted.')
     time_date = fields.Datetime('The time and date of the marriage.')
     marrage_bool = fields.Boolean('marrage')
+    image_field = fields.Binary(string="Image", attachment=True)
+    name_death_register=fields.Char('Name')
+    parish_death_register=fields.Char('Parish')
+    spouses_death_register=fields.Char('Husband/Wife Name')
+    children_death_register=fields.Char('Children')
+    date_of_birth_death_register=fields.Date('Date of Birth')
+    date_of_death_register=fields.Date('Date of Death')
+    funeral_date_time=fields.Datetime('funeral dates and times')
+    death_bool = fields.Boolean('death register')
 
     @api.model
     def default_get(self, fields):
@@ -52,6 +61,7 @@ class CentenaryForm(models.Model):
     def _onchange_category(self):
         baptism_category_id = self.env['centenary.celebration'].search([('name', '=', 'Baptism Register')], limit=1).id
         marrage_category_id = self.env['centenary.celebration'].search([('name', '=', 'Marrage Register')], limit=1).id
+        death_bool_category_id = self.env['centenary.celebration'].search([('name', '=', 'Death Register')], limit=1).id
 
         if self.Category and self.Category.id == baptism_category_id:
             self.baptism_bool = True
@@ -61,6 +71,11 @@ class CentenaryForm(models.Model):
             self.marrage_bool = True
         else:
             self.marrage_bool = False
+
+        if self.Category and self.Category.id == death_bool_category_id:
+            self.death_bool = True
+        else:
+            self.death_bool = False
 
 class MarrageRegisterLine(models.Model):
     _name = 'marrage.register'
