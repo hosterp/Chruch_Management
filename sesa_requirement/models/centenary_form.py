@@ -60,7 +60,7 @@ class CentenaryForm(models.Model):
     @api.onchange('Category')
     def _onchange_category(self):
         baptism_category_id = self.env['centenary.celebration'].search([('name', '=', 'Baptism Register')], limit=1).id
-        marrage_category_id = self.env['centenary.celebration'].search([('name', '=', 'Marrage Register')], limit=1).id
+        marrage_category_id = self.env['centenary.celebration'].search([('name', '=', 'Marriage Register')], limit=1).id
         death_bool_category_id = self.env['centenary.celebration'].search([('name', '=', 'Death Register')], limit=1).id
 
         if self.Category and self.Category.id == baptism_category_id:
