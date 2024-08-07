@@ -15,7 +15,8 @@
                         <!--                               statusbar_colors='{"completed":"green","cancel":"red"}' readonly="1"/>-->
                     </header>
                     <sheet>
-                         <field name="image_field" widget='image' class="oe_left oe_avatar" attrs="{'invisible': [('death_bool','!=', True)]}"/>
+                        <field name="image_field" widget='image' class="oe_left oe_avatar"
+                               attrs="{'invisible': [('death_bool','!=', True)]}"/>
                         <group col="2">
                             <group>
                                 <field name="date" attrs="{'invisible': [('death_bool','=', True)]}"/>
@@ -26,6 +27,7 @@
                                 <field name="baptism_bool" invisible="1"/>
                                 <field name="marrage_bool" invisible="1"/>
                                 <field name="death_bool" invisible="1"/>
+                                <field name="kallra_bool" invisible="1"/>
                             </group>
 
                         </group>
@@ -40,20 +42,31 @@
                                 <field name="present_parish" attrs="{'invisible': [('baptism_bool','!=', True)]}"/>
 
                                 <field name="groom_name" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
-                                <field name="date_of_birth_marrage" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
+                                <field name="date_of_birth_marrage"
+                                       attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
                                 <field name="address_marrage" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
                                 <field name="chruch" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
                                 <field name="name_of_parents" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
-                                <field name="address_parents_marrage" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
+                                <field name="address_parents_marrage"
+                                       attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
                                 <field name="married_before" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
                                 <field name="baptized_before" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
-                                <field name="holycommunion_before" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
+                                <field name="holycommunion_before"
+                                       attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
                                 <field name="certificate_vicar" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
                                 <field name="place" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
                                 <field name="time_date" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
-                                <field name="date_of_birth_death_register" attrs="{'invisible': [('death_bool','!=', True)]}"/>
+                                <field name="date_of_birth_death_register"
+                                       attrs="{'invisible': [('death_bool','!=', True)]}"/>
                                 <field name="parish_death_register" attrs="{'invisible': [('death_bool','!=', True)]}"/>
-                                <field name="children_death_register" attrs="{'invisible': [('death_bool','!=', True)]}"/>
+                                <field name="children_death_register"
+                                       attrs="{'invisible': [('death_bool','!=', True)]}"/>
+                                <field name="kallara_assigned"
+                                       attrs="{'invisible': [('kallra_bool','!=', True)]}"/>
+                                <field name="house_name"
+                                       attrs="{'invisible': [('kallra_bool','!=', True)]}"/>
+                                <field name="kallara_assigned_year"
+                                       attrs="{'invisible': [('kallra_bool','!=', True)]}"/>
 
 
 
@@ -71,19 +84,26 @@
                                 <field name="denomination" attrs="{'invisible': [('baptism_bool','!=', True)]}"/>
                                 <field name="god_parents" attrs="{'invisible': [('baptism_bool','!=', True)]}"/>
                                 <field name="bride_name" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
-                                <field name="date_of_birth_marrage" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
+                                <field name="date_of_birth_marrage"
+                                       attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
                                 <field name="address_marrage" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
                                 <field name="chruch" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
                                 <field name="name_of_parents" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
-                                <field name="address_parents_marrage" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
+                                <field name="address_parents_marrage"
+                                       attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
                                 <field name="married_before" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
                                 <field name="baptized_before" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
-                                <field name="holycommunion_before" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
+                                <field name="holycommunion_before"
+                                       attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
                                 <field name="certificate_vicar" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
                                 <field name="place" attrs="{'invisible': [('marrage_bool','!=', True)]}"/>
-                                 <field name="date_of_death_register" attrs="{'invisible': [('death_bool','!=', True)]}"/>
-                                 <field name="spouses_death_register" attrs="{'invisible': [('death_bool','!=', True)]}"/>
-                                 <field name="funeral_date_time" attrs="{'invisible': [('death_bool','!=', True)]}"/>
+                                <field name="date_of_death_register"
+                                       attrs="{'invisible': [('death_bool','!=', True)]}"/>
+                                <field name="spouses_death_register"
+                                       attrs="{'invisible': [('death_bool','!=', True)]}"/>
+                                <field name="funeral_date_time" attrs="{'invisible': [('death_bool','!=', True)]}"/>
+                                 <field name="kallara_no" attrs="{'invisible': [('kallra_bool','!=', True)]}"/>
+                                 <field name="kallara_fee" attrs="{'invisible': [('kallra_bool','!=', True)]}"/>
                             </group>
                         </group>
                         <!--                        <notebook>-->
@@ -105,11 +125,7 @@
             <field name="arch" type="xml">
                 <tree create="1">
                     <field name="date"/>
-                    <field name="name"/>
-                    <field name="connect_id" string="Family Number"/>
                     <field name="Category"/>
-                    <field name="phone"/>
-                    <field name="email"/>
                 </tree>
             </field>
         </record>

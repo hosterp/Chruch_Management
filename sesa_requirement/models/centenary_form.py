@@ -48,6 +48,12 @@ class CentenaryForm(models.Model):
     date_of_death_register=fields.Date('Date of Death')
     funeral_date_time=fields.Datetime('funeral dates and times')
     death_bool = fields.Boolean('death register')
+    kallara_no=fields.Integer('kallara NO')
+    kallara_assigned=fields.Char('kallara assigned person')
+    kallara_assigned_year=fields.Integer('No of Years')
+    kallara_fee=fields.Integer('Kallara Fees')
+    house_name=fields.Char('House Name')
+    kallra_bool = fields.Boolean('kallara register')
 
     @api.model
     def default_get(self, fields):
@@ -59,22 +65,36 @@ class CentenaryForm(models.Model):
 
     @api.onchange('Category')
     def _onchange_category(self):
-        baptism_category_id = self.env['centenary.celebration'].search([('name', '=', 'Baptism Register')], limit=1).id
-        marrage_category_id = self.env['centenary.celebration'].search([('name', '=', 'Marriage Register')], limit=1).id
-        death_bool_category_id = self.env['centenary.celebration'].search([('name', '=', 'Death Register')], limit=1).id
+        category = self.env['centenary.celebration'].browse(self.Category.id) if self.Category else None
+        if category:
+            if category.name == 'Baptism Register':
+                self.baptism_bool = True
+                self.marrage_bool = False
+                self.death_bool = False
+                self.kallra_bool = False
+            elif category.name == 'Marriage Register':
+                self.baptism_bool = False
+                self.marrage_bool = True
+                self.death_bool = False
+                self.kallra_bool = False
+            elif category.name == 'Death Register':
+                self.baptism_bool = False
+                self.marrage_bool = False
+                self.death_bool = True
+                self.kallra_bool = False
 
-        if self.Category and self.Category.id == baptism_category_id:
-            self.baptism_bool = True
+            elif category.name == 'Kallara Register':
+                self.baptism_bool = False
+                self.marrage_bool = False
+                self.death_bool = False
+                self.kallra_bool = True
+            else:
+                self.baptism_bool = False
+                self.marrage_bool = False
+                self.death_bool = False
         else:
             self.baptism_bool = False
-        if self.Category and self.Category.id == marrage_category_id:
-            self.marrage_bool = True
-        else:
             self.marrage_bool = False
-
-        if self.Category and self.Category.id == death_bool_category_id:
-            self.death_bool = True
-        else:
             self.death_bool = False
 
 class MarrageRegisterLine(models.Model):
