@@ -63,6 +63,7 @@ class CentenaryForm(models.Model):
     no_of_female=fields.Integer('Female')
     no_of_children=fields.Integer('Children')
     no_of_youth=fields.Integer('Youth')
+    time=fields.Char('Time')
     group_bool=fields.Boolean('Group')
 
 

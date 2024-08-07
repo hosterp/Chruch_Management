@@ -109,6 +109,7 @@
                                 <field name="kallara_fee" attrs="{'invisible': [('kallra_bool','!=', True)]}"/>
                                 <field name="meeting_location" attrs="{'invisible': [('group_bool','!=', True)]}"/>
                                 <field name="no_of_families" attrs="{'invisible': [('group_bool','!=', True)]}"/>
+                                <field name="time" attrs="{'invisible': [('group_bool','!=', True)]}"/>
                             </group>
                         </group>
                         <group col="4">
