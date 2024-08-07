@@ -22,6 +22,6 @@
         </record>
 
          <menuitem id="sub_submenu_dashboard_family_register" parent="submenu_home" name="Family Register"
-                  sequence="3" action="hr.open_view_employee_list_my_tree_family    "/>
+                  sequence="3" action="hr.open_view_employee_list_my_tree_family"/>
     </data>
 </openerp>

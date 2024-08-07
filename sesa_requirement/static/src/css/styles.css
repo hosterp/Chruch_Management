@@ -35,3 +35,8 @@ body.oe_single_form {
     height: auto;
     clip: rect(10px, 100px, 110px, 0px);
 }
+.openerp .oe_form_sheet_width {
+  min-width: 650px;
+  max-width:2000px;
+  margin: 0 auto;
+}
