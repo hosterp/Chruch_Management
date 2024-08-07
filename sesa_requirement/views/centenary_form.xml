@@ -28,6 +28,7 @@
                                 <field name="marrage_bool" invisible="1"/>
                                 <field name="death_bool" invisible="1"/>
                                 <field name="kallra_bool" invisible="1"/>
+                                <field name="group_bool" invisible="1"/>
                             </group>
 
                         </group>
@@ -67,7 +68,9 @@
                                        attrs="{'invisible': [('kallra_bool','!=', True)]}"/>
                                 <field name="kallara_assigned_year"
                                        attrs="{'invisible': [('kallra_bool','!=', True)]}"/>
-
+                                <field name="group_name" attrs="{'invisible': [('group_bool','!=', True)]}"/>
+                                <field name="group_president" attrs="{'invisible': [('group_bool','!=', True)]}"/>
+                                <field name="group_secretary" attrs="{'invisible': [('group_bool','!=', True)]}"/>
 
 
                                 <!--                                <field name="event_category" widget="radio"/>-->
@@ -102,8 +105,20 @@
                                 <field name="spouses_death_register"
                                        attrs="{'invisible': [('death_bool','!=', True)]}"/>
                                 <field name="funeral_date_time" attrs="{'invisible': [('death_bool','!=', True)]}"/>
-                                 <field name="kallara_no" attrs="{'invisible': [('kallra_bool','!=', True)]}"/>
-                                 <field name="kallara_fee" attrs="{'invisible': [('kallra_bool','!=', True)]}"/>
+                                <field name="kallara_no" attrs="{'invisible': [('kallra_bool','!=', True)]}"/>
+                                <field name="kallara_fee" attrs="{'invisible': [('kallra_bool','!=', True)]}"/>
+                                <field name="meeting_location" attrs="{'invisible': [('group_bool','!=', True)]}"/>
+                                <field name="no_of_families" attrs="{'invisible': [('group_bool','!=', True)]}"/>
+                            </group>
+                        </group>
+                        <group col="4">
+                            <group>
+                                <field name="no_of_male" attrs="{'invisible': [('group_bool','!=', True)]}"/>
+                                <field name="no_of_female" attrs="{'invisible': [('group_bool','!=', True)]}"/>
+                            </group>
+                            <group>
+                                <field name="no_of_children" attrs="{'invisible': [('group_bool','!=', True)]}"/>
+                                <field name="no_of_youth" attrs="{'invisible': [('group_bool','!=', True)]}"/>
                             </group>
                         </group>
                         <!--                        <notebook>-->

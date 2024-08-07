@@ -34,8 +34,7 @@ class CentenaryForm(models.Model):
     married_before = fields.Selection([('YES', 'YES'), ('NO', 'NO')], 'married before?')
     baptized_before = fields.Selection([('YES', 'YES'), ('NO', 'NO')], 'baptized?')
     holycommunion_before = fields.Selection([('YES', 'YES'), ('NO', 'NO')], 'person received Holy Communion?')
-    certificate_vicar = fields.Selection([('YES', 'YES'), ('NO', 'NO')],
-                                         "Is the parish vicar's certificate available?")
+    certificate_vicar = fields.Selection([('YES', 'YES'), ('NO', 'NO')], "Is the parish vicar's certificate available?")
     place = fields.Char('Place where the marriage is to be conducted.')
     time_date = fields.Datetime('The time and date of the marriage.')
     marrage_bool = fields.Boolean('marrage')
@@ -48,12 +47,27 @@ class CentenaryForm(models.Model):
     date_of_death_register=fields.Date('Date of Death')
     funeral_date_time=fields.Datetime('funeral dates and times')
     death_bool = fields.Boolean('death register')
+
     kallara_no=fields.Integer('kallara NO')
     kallara_assigned=fields.Char('kallara assigned person')
     kallara_assigned_year=fields.Integer('No of Years')
     kallara_fee=fields.Integer('Kallara Fees')
     house_name=fields.Char('House Name')
     kallra_bool = fields.Boolean('kallara register')
+    group_name=fields.Char('Group Name')
+    group_president=fields.Char('Group President')
+    group_secretary=fields.Char('Group Secretary')
+    meeting_location=fields.Char('Meeting Location')
+    no_of_families=fields.Integer('Number of Families')
+    no_of_male=fields.Integer('Male')
+    no_of_female=fields.Integer('Female')
+    no_of_children=fields.Integer('Children')
+    no_of_youth=fields.Integer('Youth')
+    group_bool=fields.Boolean('Group')
+
+
+
+
 
     @api.model
     def default_get(self, fields):
@@ -88,6 +102,13 @@ class CentenaryForm(models.Model):
                 self.marrage_bool = False
                 self.death_bool = False
                 self.kallra_bool = True
+
+            elif category.name == 'Prarthana Yogam':
+                self.baptism_bool = False
+                self.marrage_bool = False
+                self.death_bool = False
+                self.kallra_bool = False
+                self.group_bool = True
             else:
                 self.baptism_bool = False
                 self.marrage_bool = False
