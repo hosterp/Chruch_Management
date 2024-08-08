@@ -25,6 +25,7 @@
             'views/centenary_celebration.xml',
             'views/centenary_form.xml',
             'views/family_register.xml',
+
     ],
     # 'css': [
     #     "static/src/css/styles.css",

@@ -43,6 +43,8 @@ class HrEmployee(models.Model):
     aadhar_no = fields.Char(string="Aadhar No")
     event_place = fields.Many2one('event.place', "Place")
     position=fields.Char('Position')
+    address=fields.Text('Address')
+    members_ids=fields.One2many('family.member','head_of_family_id')
 
     @api.onchange('event_district')
     def onchange_event_district(self):
@@ -56,3 +58,5 @@ class HrEmployee(models.Model):
             return {'value': {'street': address.street, 'street2': address.street2, 'city': address.city,
                               'state_id': address.state_id, 'zip': address.zip, 'country_id': address.country_id}}
         return {'value': {'street': '', 'street2': '', 'city': '', 'state_id': '', 'zip': '', 'country_id': ''}}
+
+
