@@ -25,14 +25,17 @@
                             <field name="mobile_phone" string="Alternative Mobile No" invisible="1"/>
                         </group>
                         <group>
+                            <field name="total_members" string="Total Members"/>
+                            <field name="group_of_family" string="Group of Family"/>
                             <field name="work_email" widget="email" string="Email ID"/>
                             <field name="work_phone" string="Mobile No"/>
+
 <!--                            <field name="position" string=" Position"/>-->
                             <field name="aadhar_no" invisible="1"/>
                         </group>
                     </group>
                     <notebook>
-                        <page string="add member">
+                        <page string="Add Members">
                             <field name="members_ids">
                                 <tree editable="bottom">
                                      <field name="name"/>
