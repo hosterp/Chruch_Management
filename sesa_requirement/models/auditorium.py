@@ -3,18 +3,21 @@ from openerp import fields, models, api
 class Auditorium(models.Model):
     _name = 'auditorum.fields'
 
-    bookin_date=fields.Char('Booking Date')
+    bookin_date=fields.Datetime('Booking Date')
     booking_details=fields.Text('Booking Details')
-    ac_or_non=fields.Boolean('AC/Non AC')
+    ac_or_non=fields.Selection([('AC','AC'),('Non AC','Non AC')],'AC/Non AC')
     Generator=fields.Boolean('Generator')
     current=fields.Boolean('Current')
     water=fields.Boolean('Water')
     Chair=fields.Boolean('Chair')
     no_of_chair=fields.Integer('Number of chairs')
     sound_sysrem=fields.Boolean('Sound System')
-    purpose=fields.Char('Purpose')
+    purpose=fields.Many2one('auditorium.purpose','Purpose')
     total_amount=fields.Float('Total Amount')
+    advance=fields.Float('Advance Amount')
+    auditorium_name=fields.Char('Auditorium Name')
     event_place = fields.Many2one('church.place', "Chruch")
+    invoice_ids=fields.One2many('auditorium.invoice','invoice_id')
 
     @api.model
     def default_get(self, fields):
@@ -250,3 +253,22 @@ class ChurchDetails(models.Model):
         id = result and result[1] or False
         result = act_obj.read(cr, uid, [id], context=context)[0]
         return result
+
+class AuditoriumPurpose(models.Model):
+    _name = 'auditorium.purpose'
+    _rec_name = 'purpose'
+
+    purpose = fields.Char('Purpose')
+
+class AuditoriumServices(models.Model):
+    _name = 'auditorium.services'
+
+    services=fields.Char('Extra services')
+
+class AuditoriumInvoice(models.Model):
+    _name = 'auditorium.invoice'
+
+    invoice_id=fields.Many2one('auditorum.fields')
+    services = fields.Many2one('auditorium.services','Extra services')
+    amount=fields.Float('Total Amount')
+    advance_amount=fields.Float('Advance Amount')
