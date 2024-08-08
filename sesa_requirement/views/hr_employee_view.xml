@@ -42,6 +42,8 @@
                                     <field name="date_of_birth"/>
                                     <field name="age"/>
                                     <field name="gender"/>
+                                    <field name="phone_no"/>
+                                    <field name="email"/>
                                     <field name="relation"/>
                                 </tree>
                             </field>

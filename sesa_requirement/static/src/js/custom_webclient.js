@@ -9,6 +9,7 @@ openerp.sesa_requirement = function (instance) {
         },
     });
 };
+
 $(document).ready(function () {
     $(document).on('keydown', 'input[type="text"], textarea, .o_field_many2one input', function(event) {
         if (event.which === 13) {
