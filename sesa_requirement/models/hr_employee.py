@@ -1,4 +1,5 @@
 from openerp import fields, models, api
+import centenary_form
 
 
 class HrEmployee(models.Model):
@@ -44,7 +45,19 @@ class HrEmployee(models.Model):
     event_place = fields.Many2one('event.place', "Place")
     position=fields.Char('Position')
     address=fields.Text('Address')
+    # group_of_family=fields.Many2one()
+    total_members=fields.Integer('Total Members')
     members_ids=fields.One2many('family.member','head_of_family_id')
+    group_name_id=fields.Many2one(comodel_name='centenary.form')
+    group_of_family = fields.Selection(selection='_get_group_name_options')
+
+    @api.model
+    def _get_group_name_options(self):
+        # Fetch the options dynamically from `centenary.form`
+        # This is an example and might require adjustments based on your requirements
+        centenary_forms = self.env['centenary.form'].search([])
+        options = [(form.group_name, form.group_name) for form in centenary_forms]
+        return options
 
     @api.onchange('event_district')
     def onchange_event_district(self):
