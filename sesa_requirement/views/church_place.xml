@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="kanban_church_place" model="ir.ui.view">
+            <field name="model">church.place</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box" string="HR">
+                            <table class="oe_kanban_groups">
+                                <tr style="width:120px;">
+                                    <td>
+                                         <span t-attf-class="#{kanban_color(661)} oe_kanban_card " style="width:260px;background-color:lightblue">
+                                            <div class="o_project_kanban_main"
+                                                 style="font-size:20px;width:230px;height:100px">
+                                                <div class="o_kanban_card_content"
+                                                     align="center">
+                                                    <center>
+                                                        <table>
+                                                            <center>
+                                                                <tr>
+                                                                    <center>
+                                                                        <!-- <span style="border=none">
+                                                                            <button class="your_custom_button" style="border=none" type="object" name="call_event" string="Add/View Event">THIRUVANANTHAPURAM</button>
+                                                                        </span> -->
+                                                                        <b>
+                                                                            <span class="center-align">
+                                                                                <field name="church_place"/>
+                                                                            </span>
+                                                                        </b>
+                                                                    </center>
+                                                                </tr>
+                                                            </center>
+                                                            <tr>
+                                                                <div>
+                                                                    <center>
+                                                                        <button class="center-align" type="object"
+                                                                                name="call_event"
+                                                                                string="Add/View Event">View Form
+                                                                        </button>
+                                                                    </center>
+                                                                </div>
+                                                            </tr>
+                                                        </table>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </span>
+
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <record id="event_auditorium_dashboard_place_form_view" model="ir.ui.view">
+            <field name="name">event.auditorium.dashboard.place.form.view</field>
+            <field name="model">church.place</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+<!--                        <field name="date"/>-->
+                        <field name="church_place"/>
+                        <field name="event_district"/>
+<!--                        <field name="district_place_count" string="Count"/>-->
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="action_dashboard_places_auditorium" model="ir.actions.act_window">
+            <!--		    <field name="name">Place</field>-->
+            <field name="name">THIRUVANANTHAPURAM</field>
+            <field name="res_model">church.place</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,form,tree</field>
+            <field name="domain">[('event_district','=','TV')]</field>
+        </record>
+
+        <record id="action_auditorium_dashboard_places_pta" model="ir.actions.act_window">
+            <field name="name">PATHANAMTHITTA</field>
+            <!--		    <field name="name">Place</field>-->
+            <field name="res_model">church.place</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="domain">[('event_district','=','PT')]</field>
+        </record>
+
+        <record id="action_auditorium_dashboard_places_kl" model="ir.actions.act_window">
+            <!--		    <field name="name">Place</field>-->
+            <field name="name">KOLLAM</field>
+            <field name="res_model">church.place</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="domain">[('event_district','=','KL')]</field>
+        </record>
+
+        <record id="action_auditorium_dashboard_places_al" model="ir.actions.act_window">
+            <!--		    <field name="name">Place</field>-->
+            <field name="name">ALAPUZHA</field>
+            <field name="res_model">church.place</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="domain">[('event_district','=','AL')]</field>
+        </record>
+
+        <record id="action_auditorium_dashboard_places_er" model="ir.actions.act_window">
+            <field name="name">ERNAKULAM</field>
+            <!--		    <field name="name">Place</field>-->
+            <field name="res_model">church.place</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="domain">[('event_district','=','ER')]</field>
+        </record>
+
+        <record id="action_auditorium_dashboard_places_id" model="ir.actions.act_window">
+            <!--		    <field name="name">Place</field>-->
+            <field name="name">IDUKKI</field>
+            <field name="res_model">church.place</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="domain">[('event_district','=','ID')]</field>
+        </record>
+
+        <record id="action_auditorium_dashboard_places_kn" model="ir.actions.act_window">
+            <!--		    <field name="name">Place</field>-->
+            <field name="name">KANNUR</field>
+            <field name="res_model">church.place</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="domain">[('event_district','=','KN')]</field>
+        </record>
+
+        <record id="action_auditorium_dashboard_places_ks" model="ir.actions.act_window">
+            <!--		    <field name="name">Place</field>-->
+            <field name="name">KASARAGOD</field>
+            <field name="res_model">church.place</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="domain">[('event_district','=','KS')]</field>
+        </record>
+
+        <record id="action_auditorium_dashboard_places_kt" model="ir.actions.act_window">
+            <!--		    <field name="name">Place</field>-->
+            <field name="name">KOTTAYAM</field>
+            <field name="res_model">church.place</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="domain">[('event_district','=','KT')]</field>
+        </record>
+
+        <record id="action_auditorium_dashboard_places_kz" model="ir.actions.act_window">
+            <!--		    <field name="name">Place</field>-->
+            <field name="name">KOZHIKODE</field>
+            <field name="res_model">church.place</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="domain">[('event_district','=','KZ')]</field>
+        </record>
+
+        <record id="action_auditorium_dashboard_places_ma" model="ir.actions.act_window">
+            <!--		    <field name="name">Place</field>-->
+            <field name="name">MALAPPURAM</field>
+            <field name="res_model">church.place</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="domain">[('event_district','=','MA')]</field>
+        </record>
+
+        <record id="action_auditorium_dashboard_places_pl" model="ir.actions.act_window">
+            <!--		    <field name="name">Place</field>-->
+            <field name="name">PALAKKAD</field>
+            <field name="res_model">church.place</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="domain">[('event_district','=','PL')]</field>
+        </record>
+
+        <record id="action_auditorium_dashboard_places_ts" model="ir.actions.act_window">
+            <!--		    <field name="name">Place</field>-->
+            <field name="name">THRISSUR</field>
+            <field name="res_model">church.place</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="domain">[('event_district','=','TS')]</field>
+        </record>
+
+        <record id="action_auditorium_dashboard_places_wa" model="ir.actions.act_window">
+            <!--		    <field name="name">Place</field>-->
+            <field name="name">WAYANAD</field>
+            <field name="res_model">church.place</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="domain">[('event_district','=','WA')]</field>
+        </record>
+
+    </data>
+</openerp>

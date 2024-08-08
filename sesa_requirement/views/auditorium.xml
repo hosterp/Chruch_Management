@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+          <record id="view_event_dasboard_kanban_auditorium" model="ir.ui.view">
+            <field name="name">auditorium.dashboard.view</field>
+            <field name="model">auditorium.dashboard</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_dashboard" create="0">
+                    <field name="image_kanban"/>
+                    <templates>
+                        <t t-name="kanban-box" string="HR">
+                            <div class="oe_kanban_header">
+                                <div class="oe_kanban_header_left" style="text-align: center;font-size: 20px;">
+<!--                                   <b><span class="oe_kanban_header_title">Total Churches-<field name="place_count"></field></span></b>-->
+                                </div>
+                            </div>
+                            <table class="oe_kanban_groups" style="min-height: 100px;">
+                                <tr style="width:100px;">
+                                    <td>
+                                        <span t-attf-class="#{kanban_color(661)} oe_kanban_card ">
+                                            <div class="o_project_kanban_main"
+                                                 style="font-size:20px;width:300px;height:150px">
+                                                <div class="o_kanban_card_content" style="position:absolute;left:40px;"
+                                                     align="center">
+                                                    <center>
+                                                        <table>
+                                                            <center>
+                                                                <tr>
+                                                                    <b>
+                                                                        <span style="font-size:16px;text-align:center;margin:0px -36px 0px -37px;">
+                                                                            THIRUVANANTHAPURAM
+                                                                        </span>
+                                                                    </b>
+                                                                </tr>
+                                                            </center>
+                                                            <tr>
+                                                                <div>
+                                                                    <left>
+                                                                        <button class="your_custom_button"
+                                                                                style="margin: 39px 0px 0px -12px;"
+                                                                                type="object" name="call_place"
+                                                                                string="View">View Church Details
+                                                                        </button>
+                                                                    </left>
+                                                                </div>
+                                                            </tr>
+                                                        </table>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span t-attf-class="#{kanban_color(662)} oe_kanban_card ">
+                                            <div class="o_project_kanban_main"
+                                                 style="font-size:20px;width:300px;height:150px">
+                                                <div class="o_kanban_card_content" style="position:absolute;left:40px;"
+                                                     align="center">
+                                                    <center>
+                                                        <table>
+                                                            <tr>
+                                                                <center>
+                                                                    <b>
+                                                                        <span style="font-size: 16px;text-align: center;margin: 0px 22px 0px 8px;">
+                                                                            KOLLAM
+                                                                        </span>
+                                                                    </b>
+                                                                </center>
+                                                            </tr>
+                                                            <tr>
+                                                                <div>
+                                                                    <left>
+                                                                        <button class="your_custom_button" type="object"
+                                                                                style="margin: 39px 0px 0px -12px;"
+                                                                                name="call_kollam" string="View">View Church Details
+                                                                        </button>
+                                                                    </left>
+                                                                </div>
+                                                            </tr>
+                                                        </table>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span t-attf-class="#{kanban_color(664)} oe_kanban_card ">
+                                            <div class="o_project_kanban_main"
+                                                 style="font-size:20px;width:300px;height:150px">
+                                                <div class="o_kanban_card_content" style="position:absolute;left:40px;"
+                                                     align="center">
+                                                    <center>
+                                                        <table>
+                                                            <tr>
+                                                                <center>
+                                                                    <b>
+                                                                        <span style="font-size: 16px;text-align: center;margin: 0px 14px 0px -7px;">
+                                                                            PATHANAMTHITTA
+                                                                        </span>
+                                                                    </b>
+                                                                </center>
+                                                            </tr>
+                                                            <tr>
+                                                                <div>
+                                                                    <left>
+                                                                        <button class="your_custom_button" type="object"
+                                                                                style="margin: 39px 0px 0px -12px;"
+                                                                                name="call_pta" string="View">View Church Details
+                                                                        </button>
+                                                                    </left>
+                                                                </div>
+                                                            </tr>
+                                                        </table>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <span t-attf-class="#{kanban_color(663)} oe_kanban_card ">
+                                            <div class="o_project_kanban_main"
+                                                 style="font-size:20px;width:300px;height:150px">
+                                                <div class="o_kanban_card_content" style="position:absolute;left:40px;"
+                                                     align="center">
+                                                    <center>
+                                                        <table>
+                                                            <tr>
+                                                                <center>
+                                                                    <b>
+                                                                        <span style="font-size: 16px;text-align: center;margin: 0px 14px 0px 5px;">
+                                                                            ALAPPUZHA
+                                                                        </span>
+                                                                    </b>
+                                                                </center>
+                                                            </tr>
+                                                            <tr>
+                                                                <div>
+                                                                    <left>
+                                                                        <button class="your_custom_button" type="object"
+                                                                                style="margin: 39px 0px 0px -12px;"
+                                                                                name="call_al" string="View">View Church Details
+                                                                        </button>
+                                                                    </left>
+                                                                </div>
+                                                            </tr>
+                                                        </table>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+
+
+                                    <td>
+                                        <span t-attf-class="#{kanban_color(665)} oe_kanban_card ">
+                                            <div class="o_project_kanban_main"
+                                                 style="font-size:20px;width:300px;height:150px">
+                                                <div class="o_kanban_card_content" style="position:absolute;left:40px;"
+                                                     align="center">
+                                                    <center>
+                                                        <table>
+                                                            <tr>
+                                                                <center>
+                                                                    <b>
+                                                                        <span style="font-size: 16px;text-align: center;margin: 0px 14px 0px 5px;">
+                                                                            KOTTAYAM
+                                                                        </span>
+                                                                    </b>
+                                                                </center>
+                                                            </tr>
+                                                            <tr>
+                                                                <div>
+                                                                    <left>
+                                                                        <button class="your_custom_button" type="object"
+                                                                                style="margin: 39px 0px 0px -12px;"
+                                                                                name="call_kt" string="View">View Church Details
+                                                                        </button>
+                                                                    </left>
+                                                                </div>
+                                                            </tr>
+                                                        </table>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
+
+                                <tr style="width:120px;">
+                                    <td>
+                                        <span t-attf-class="#{kanban_color(667)} oe_kanban_card ">
+                                            <div class="o_project_kanban_main"
+                                                 style="font-size:20px;width:325px;height:150px">
+                                                <div class="o_kanban_card_content" style="position:absolute;left:40px;"
+                                                     align="center">
+                                                    <center>
+                                                        <table>
+                                                            <tr>
+                                                                <center>
+                                                                    <b>
+                                                                        <span style="font-size: 16px;text-align: center;margin: 0px 14px 0px 4px;">
+                                                                            IDUKKI
+                                                                        </span>
+                                                                    </b>
+                                                                </center>
+                                                            </tr>
+                                                            <tr>
+                                                                <div>
+                                                                    <left>
+                                                                        <button class="your_custom_button" type="object"
+                                                                                style="margin: 39px 0px 0px -12px;"
+                                                                                name="call_id" string="View">View Church Details
+                                                                        </button>
+                                                                    </left>
+                                                                </div>
+                                                            </tr>
+                                                        </table>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span t-attf-class="#{kanban_color(668)} oe_kanban_card ">
+                                            <div class="o_project_kanban_main"
+                                                 style="font-size:20px;width:300px;height:150px">
+                                                <div class="o_kanban_card_content" style="position:absolute;left:40px;"
+                                                     align="center">
+                                                    <center>
+                                                        <table>
+                                                            <tr>
+                                                                <center>
+                                                                    <b>
+                                                                        <span style="font-size: 16px;text-align: center;margin: 0px 14px 0px 10px;">
+                                                                            ERNAKULAM
+                                                                        </span>
+                                                                    </b>
+                                                                </center>
+                                                            </tr>
+                                                            <tr>
+                                                                <div>
+                                                                    <left>
+                                                                        <button class="your_custom_button" type="object"
+                                                                                style="margin: 39px 0px 0px -12px;"
+                                                                                name="call_er" string="View">View Church Details
+                                                                        </button>
+                                                                    </left>
+                                                                </div>
+                                                            </tr>
+                                                        </table>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span t-attf-class="#{kanban_color(660)} oe_kanban_card">
+                                            <div class="o_project_kanban_main"
+                                                 style="font-size:20px;width:300px;height:150px; position:relative;">
+                                                <div class="o_kanban_card_content"
+                                                     style="position:absolute;left:0;top:0;right:0;bottom:0;">
+                                                    <div class="oe_employee_image"
+                                                         style="height:100%; width:67%; display:flex; align-items:center; justify-content:center;">
+                                                        <a type="open">
+                                                            <img t-att-src="kanban_image('event.dashboard', 'image_kanban', record.id.value)"
+                                                                 class="oe_employee_picture"
+                                                                 style="max-width:100%; max-height:100%;"/>
+                                                        </a>
+                                                    </div>
+                                                    <!-- Other content -->
+                                                    <center>
+                                                        <table>
+                                                            <tr>
+                                                                <center>
+                                                                    <!-- Your content here -->
+                                                                </center>
+                                                            </tr>
+                                                            <tr>
+                                                                <div>
+                                                                    <left>
+                                                                        <!-- Your buttons or other elements here -->
+                                                                    </left>
+                                                                </div>
+                                                            </tr>
+                                                        </table>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span t-attf-class="#{kanban_color(669)} oe_kanban_card ">
+                                            <div class="o_project_kanban_main"
+                                                 style="font-size:20px;width:300px;height:150px">
+                                                <div class="o_kanban_card_content" style="position:absolute;left:40px;"
+                                                     align="center">
+                                                    <center>
+                                                        <table>
+                                                            <tr>
+                                                                <center>
+                                                                    <b>
+                                                                        <span style="font-size: 16px;text-align: center;margin: 0px 14px 0px 0px;">
+                                                                            THRISSUR
+                                                                        </span>
+                                                                    </b>
+                                                                </center>
+                                                            </tr>
+                                                            <tr>
+                                                                <div>
+                                                                    <left>
+                                                                        <button class="your_custom_button" type="object"
+                                                                                style="margin: 39px 0px 0px -12px;"
+                                                                                name="call_ts" string="View">View Church Details
+                                                                        </button>
+                                                                    </left>
+                                                                </div>
+                                                            </tr>
+                                                        </table>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span t-attf-class="#{kanban_color(661)} oe_kanban_card ">
+                                            <div class="o_project_kanban_main"
+                                                 style="font-size:20px;width:300px;height:150px">
+                                                <div class="o_kanban_card_content" style="position:absolute;left:40px;"
+                                                     align="center">
+                                                    <center>
+                                                        <table>
+                                                            <tr>
+                                                                <center>
+                                                                    <b>
+                                                                        <span style="font-size: 16px;text-align: center;margin: 0px 14px 0px 4px;">
+                                                                            PALAKKAD
+                                                                        </span>
+                                                                    </b>
+                                                                </center>
+                                                            </tr>
+                                                            <tr>
+                                                                <div>
+                                                                    <left>
+                                                                        <button class="your_custom_button" type="object"
+                                                                                style="margin: 39px 0px 0px -12px;"
+                                                                                name="call_pl" string="View">View Church Details
+                                                                        </button>
+                                                                    </left>
+                                                                </div>
+                                                            </tr>
+                                                        </table>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+                                <tr style="width:120px;">
+                                     <td>
+                                        <span t-attf-class="#{kanban_color(676)} oe_kanban_card ">
+                                            <div class="o_project_kanban_main"
+                                                 style="font-size:20px;width:300px;height:150px">
+                                                <div class="o_kanban_card_content" style="position:absolute;left:40px;"
+                                                     align="center">
+                                                    <center>
+                                                        <table>
+                                                            <tr>
+                                                                <center>
+                                                                    <b>
+                                                                        <span style="font-size: 16px;text-align: center;margin: 0px 14px 0px 7px;">
+                                                                            MALAPPURAM
+                                                                        </span>
+                                                                    </b>
+                                                                </center>
+                                                            </tr>
+                                                            <tr>
+                                                                <div>
+                                                                    <left>
+                                                                        <button class="your_custom_button" type="object"
+                                                                                style="margin: 39px 0px 0px -12px;"
+                                                                                name="call_ma" string="View">View Church Details
+                                                                        </button>
+                                                                    </left>
+                                                                </div>
+                                                            </tr>
+                                                        </table>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span t-attf-class="#{kanban_color(672)} oe_kanban_card ">
+                                            <div class="o_project_kanban_main"
+                                                 style="font-size:20px;width:325px;height:150px">
+                                                <div class="o_kanban_card_content" style="position:absolute;left:40px;"
+                                                     align="center">
+                                                    <center>
+                                                        <table>
+                                                            <tr>
+                                                                <center>
+                                                                    <b>
+                                                                        <span style="font-size: 16px;text-align: center;margin: 0px 14px 0px 0px;">
+                                                                            KOZHIKODE
+                                                                        </span>
+                                                                    </b>
+                                                                </center>
+                                                            </tr>
+                                                            <tr>
+                                                                <div>
+                                                                    <left>
+                                                                        <button class="your_custom_button" type="object"
+                                                                                style="margin: 39px 0px 0px -12px;"
+                                                                                name="call_kz" string="View">View Church Details
+                                                                        </button>
+                                                                    </left>
+                                                                </div>
+                                                            </tr>
+                                                        </table>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span t-attf-class="#{kanban_color(673)} oe_kanban_card ">
+                                            <div class="o_project_kanban_main"
+                                                 style="font-size:20px;width:300px;height:150px">
+                                                <div class="o_kanban_card_content" style="position:absolute;left:40px;"
+                                                     align="center">
+                                                    <center>
+                                                        <table>
+                                                            <tr>
+                                                                <center>
+                                                                    <b>
+                                                                        <span style="font-size: 16px;text-align: center;margin: 0px 14px 0px 10px;">
+                                                                            WAYANAD
+                                                                        </span>
+                                                                    </b>
+                                                                </center>
+                                                            </tr>
+                                                            <tr>
+                                                                <div>
+                                                                    <left>
+                                                                        <button class="your_custom_button" type="object"
+                                                                                style="margin: 39px 0px 0px -12px;"
+                                                                                name="call_wa" string="View">View Church Details
+                                                                        </button>
+                                                                    </left>
+                                                                </div>
+                                                            </tr>
+                                                        </table>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span t-attf-class="#{kanban_color(674)} oe_kanban_card ">
+                                            <div class="o_project_kanban_main"
+                                                 style="font-size:20px;width:300px;height:150px">
+                                                <div class="o_kanban_card_content" style="position:absolute;left:40px;"
+                                                     align="center">
+                                                    <center>
+                                                        <table>
+                                                            <tr>
+                                                                <center>
+                                                                    <b>
+                                                                        <span style="font-size: 16px;text-align: center;margin: 0px 14px 0px -2px;">
+                                                                            KANNUR
+                                                                        </span>
+                                                                    </b>
+                                                                </center>
+                                                            </tr>
+                                                            <tr>
+                                                                <div>
+                                                                    <left>
+                                                                        <button class="your_custom_button" type="object"
+                                                                                style="margin: 39px 0px 0px -12px;"
+                                                                                name="call_kn" string="View">View Church Details
+                                                                        </button>
+                                                                    </left>
+                                                                </div>
+                                                            </tr>
+                                                        </table>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span t-attf-class="#{kanban_color(675)} oe_kanban_card ">
+                                            <div class="o_project_kanban_main"
+                                                 style="font-size:20px;width:300px;height:150px">
+                                                <div class="o_kanban_card_content" style="position:absolute;left:40px;"
+                                                     align="center">
+                                                    <center>
+                                                        <table>
+                                                            <tr>
+                                                                <center>
+                                                                    <b>
+                                                                        <span style="font-size: 16px;text-align: center;margin: 0px 14px 0px 12px;">
+                                                                            KASARAGOD
+                                                                        </span>
+                                                                    </b>
+                                                                </center>
+                                                            </tr>
+                                                            <tr>
+                                                                <div>
+                                                                    <left>
+                                                                        <button class="your_custom_button" type="object"
+                                                                                style="margin: 39px 0px 0px -12px;"
+                                                                                name="call_ks" string="View">View Church Details
+                                                                        </button>
+                                                                    </left>
+                                                                </div>
+                                                            </tr>
+                                                        </table>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <record id="event_dashboard_auditorium_form_view" model="ir.ui.view">
+            <field name="name">auditorium.dashboard.form.view</field>
+            <field name="model">auditorium.dashboard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="color"/>
+                        <field name="name"/>
+                        <field name="image_kanban"/>
+<!--                        <field name="place_count"/>-->
+                    </group>
+                </form>
+            </field>
+        </record>
+
+         <record id="action_audiorium" model="ir.actions.act_window">
+            <field name="name">Auditorium Management</field>
+            <field name="res_model">auditorium.dashboard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="context">{}</field>
+            <field name="view_mode">kanban</field>
+<!--            <field name="place_count"/>-->
+        </record>
+
+        <menuitem id="menu_auditorium" name="Auditorium" sequence="200"/>
+        <menuitem id="submenu_auditorium" parent="menu_auditorium" name="Auditorium" sequence="1"/>
+        <menuitem id="sub_submenu_auditorium" parent="submenu_auditorium" name="Auditorium Details" sequence="1"
+                  action="action_audiorium"/>
+    </data>
+</openerp>

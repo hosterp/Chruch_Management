@@ -25,6 +25,9 @@
             'views/centenary_celebration.xml',
             'views/centenary_form.xml',
             'views/family_register.xml',
+            'views/auditorium.xml',
+            'views/church_place.xml',
+            'views/auditoriam_form.xml',
 
     ],
     # 'css': [

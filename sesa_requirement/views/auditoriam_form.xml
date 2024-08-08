@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+         <record id="form_event_auditorium" model="ir.ui.view">
+            <field name="name">Form for Auditorium</field>
+            <field name="model">auditorum.fields</field>
+            <field name="arch" type="xml">
+
+                <form string="Event">
+<!--                    <header>-->
+<!--                        <button name="action_completed" states="draft" string="Completed"-->
+<!--                                type="object" class="oe_highlight"/>-->
+<!--                        <button name="action_cancel" states="draft" string="Cancel"-->
+<!--                                type="object" class="oe_highlight"/>-->
+<!--                        <field name="state" widget="statusbar"-->
+<!--                               statusbar_colors='{"completed":"green","cancel":"red"}' readonly="1"/>-->
+<!--                    </header>-->
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="bookin_date"/>
+
+                                <field name="ac_or_non"/>
+                                <field name="current"/>
+                                <field name="Chair"/>
+                                <field name="event_place"/>
+                                <field name="total_amount"/>
+                            </group>
+                            <group>
+                                <field name="purpose"/>
+                                <field name="Generator"/>
+                                <field name="water"/>
+                                <field name="no_of_chair"/>
+                                 <field name="booking_details"/>
+
+                            </group>
+
+                        </group>
+                        <group>
+                        </group>
+                        <group>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+         <record id="tree_event_view_only_auditorium" model="ir.ui.view">
+            <field name="name">Form Auditorium</field>
+            <field name="model">auditorum.fields</field>
+            <field name="priority">30</field>
+            <field name="arch" type="xml">
+                <tree fg_color="green:state == 'completed'" create="1">
+
+                    <field name="bookin_date"/>
+<!--                    <field name="booking_details"/>-->
+                    <field name="purpose"/>
+                    <field name="no_of_chair"/>
+                    <field name="total_amount"/>
+                </tree>
+            </field>
+        </record>
+
+         <record id="action_auditorium_form" model="ir.actions.act_window">
+            <field name="name">Auditorium Form</field>
+            <field name="res_model">auditorum.fields</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('event_place','=',active_id)]</field>
+            <field name="view_id" ref="tree_event_view_only_auditorium"/>
+        </record>
+    </data>
+</openerp>
