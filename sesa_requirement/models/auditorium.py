@@ -13,13 +13,21 @@ class Auditorium(models.Model):
     no_of_chair=fields.Integer('Number of chairs')
     sound_sysrem=fields.Boolean('Sound System')
     purpose=fields.Many2one('auditorium.purpose','Purpose')
-    total_amount=fields.Float('Total Amount')
+    total_amount=fields.Float('Total Amount',compute='_compute_total_amount')
     advance=fields.Float('Advance Amount')
+    balance=fields.Float('Balance Amount',compute='_compute_total_amount')
     auditorium_name=fields.Char('Auditorium Name')
     event_place = fields.Many2one('church.place', "Chruch")
     invoice_ids=fields.One2many('auditorium.invoice','invoice_id')
     state = fields.Selection([('draft', 'Draft'), ('completed', 'Completed'),('postpone','Postpone'),('prepone','Prepone'), ('cancel', 'Cancelled')], default='draft',
                              string="Status")
+
+    @api.depends('invoice_ids.rent_amount')
+    def _compute_total_amount(self):
+        for record in self:
+            total = sum(invoice.rent_amount for invoice in record.invoice_ids)
+            record.total_amount = total
+            record.balance=total-record.advance
 
     @api.model
     def default_get(self, fields):
@@ -279,6 +287,7 @@ class AuditoriumPurpose(models.Model):
 
 class AuditoriumServices(models.Model):
     _name = 'auditorium.services'
+    _rec_name = 'services'
 
     services=fields.Char('Extra services')
 
@@ -287,5 +296,7 @@ class AuditoriumInvoice(models.Model):
 
     invoice_id=fields.Many2one('auditorum.fields')
     services = fields.Many2one('auditorium.services','Extra services')
-    amount=fields.Float('Total Amount')
-    advance_amount=fields.Float('Advance Amount')
+    amount=fields.Float('Amount')
+    rent_amount=fields.Float('Rent Amount')
+
+
