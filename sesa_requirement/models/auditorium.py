@@ -18,6 +18,8 @@ class Auditorium(models.Model):
     auditorium_name=fields.Char('Auditorium Name')
     event_place = fields.Many2one('church.place', "Chruch")
     invoice_ids=fields.One2many('auditorium.invoice','invoice_id')
+    state = fields.Selection([('draft', 'Draft'), ('completed', 'Completed'),('postpone','Postpone'),('prepone','Prepone'), ('cancel', 'Cancelled')], default='draft',
+                             string="Status")
 
     @api.model
     def default_get(self, fields):
@@ -27,6 +29,21 @@ class Auditorium(models.Model):
             res['event_place'] = active_id
         return res
 
+    @api.multi
+    def action_completed(self):
+        self.state = 'completed'
+
+    @api.multi
+    def action_postpone(self):
+        self.state='postpone'
+
+    @api.multi
+    def action_prepone(self):
+        self.state='prepone'
+
+    @api.multi
+    def action_cancel(self):
+        self.state = 'cancel'
 class AuditoriumDashboard(models.Model):
     _name = 'auditorium.dashboard'
 

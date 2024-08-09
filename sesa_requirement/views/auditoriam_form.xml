@@ -7,14 +7,25 @@
             <field name="arch" type="xml">
 
                 <form string="Event">
-                    <!--                    <header>-->
-                    <!--                        <button name="action_completed" states="draft" string="Completed"-->
-                    <!--                                type="object" class="oe_highlight"/>-->
-                    <!--                        <button name="action_cancel" states="draft" string="Cancel"-->
-                    <!--                                type="object" class="oe_highlight"/>-->
-                    <!--                        <field name="state" widget="statusbar"-->
-                    <!--                               statusbar_colors='{"completed":"green","cancel":"red"}' readonly="1"/>-->
-                    <!--                    </header>-->
+                    <header>
+                        <header>
+                            <header>
+                                <button name="action_completed" states="draft,postpone,prepone" string="Completed"
+                                        type="object" class="oe_highlight"/>
+                                <button name="action_cancel" states="draft,postpone,prepone" string="Cancel"
+                                        type="object" class="oe_highlight"/>
+                                <button name="action_prepone" states="draft,postpone" string="Prepone" type="object"
+                                        class="oe_highlight"/>
+                                <button name="action_postpone" states="draft,prepone" string="Postpone" type="object"
+                                        class="oe_highlight"/>
+                                <field name="state" widget="statusbar"
+                                       statusbar_colors='{"completed":"green","cancel":"red","postpone":"yellow","prepone":"blue"}'
+                                       readonly="1"/>
+                            </header>
+
+                        </header>
+
+                    </header>
                     <sheet>
                         <group>
                             <group>
@@ -34,25 +45,25 @@
                             <p>Extra Services</p>
                         </strong>
                         <group col="2">
-                             <group>
-                            <field name="ac_or_non"/>
-                            <field name="current"/>
-                            <field name="Chair"/>
-                        </group>
-                        <group>
-                            <field name="Generator"/>
-                            <field name="water"/>
-                            <field name="no_of_chair"  attrs="{'invisible': [('Chair','=', False)]}"/>
-                        </group>
+                            <group>
+                                <field name="ac_or_non"/>
+                                <field name="current"/>
+                                <field name="Chair"/>
+                            </group>
+                            <group>
+                                <field name="Generator"/>
+                                <field name="water"/>
+                                <field name="no_of_chair" attrs="{'invisible': [('Chair','=', False)]}"/>
+                            </group>
                         </group>
                         <notebook>
                             <page string="Services">
                                 <field name="invoice_ids">
-                                <tree editable="bottom">
-                                    <field name="services"/>
-                                    <field name="advance_amount"/>
-                                    <field name="amount"/>
-                                </tree>
+                                    <tree editable="bottom">
+                                        <field name="services"/>
+                                        <field name="advance_amount"/>
+                                        <field name="amount"/>
+                                    </tree>
                                 </field>
                             </page>
                         </notebook>
