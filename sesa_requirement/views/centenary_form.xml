@@ -22,8 +22,9 @@
                                 <field name="date" attrs="{'invisible': [('death_bool','=', True)]}"/>
                                 <field name="name_death_register" attrs="{'invisible': [('death_bool','!=', True)]}"/>
                             </group>
-                            <group>
-                                <field name="Category"/>
+                            <group >
+
+                                <field  invisible="1" name="Category"/>
                                 <field name="baptism_bool" invisible="1"/>
                                 <field name="marrage_bool" invisible="1"/>
                                 <field name="death_bool" invisible="1"/>
@@ -140,7 +141,10 @@
             <field name="model">centenary.form</field>
             <field name="arch" type="xml">
                 <tree create="1">
+                    <field name="group_name"/>
+                    <field name="meeting_location"/>
                     <field name="date"/>
+                    <field name="no_of_families"/>
                     <field name="Category"/>
                 </tree>
             </field>
@@ -153,7 +157,7 @@
             <field name="type">ir.actions.act_window</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="domain">[('Category','=',active_id)]</field>
+            <field name="domain" >[('Category','=',active_id)]</field>
             <field name="view_id" ref="tree_event_view_centenary_celebration"/>
         </record>
 

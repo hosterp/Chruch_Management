@@ -8,7 +8,7 @@ class FamilyMember(models.Model):
     date_of_birth = fields.Date(string='Date of Birth', required=True)
     age=fields.Integer(string='Age',required=True)
     gender=fields.Selection([('male','Male'),('female','Female')],string='Gender',required=True)
-    phone_no=fields.Integer(string='Phone NO')
+    phone_no=fields.Char(string='Phone No')
     email=fields.Char(string='Email')
     relation = fields.Selection([
         ('hof','HOF'),

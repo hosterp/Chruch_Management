@@ -54,7 +54,7 @@ class CentenaryForm(models.Model):
     kallara_fee=fields.Integer('Kallara Fees')
     house_name=fields.Char('House Name')
     kallra_bool = fields.Boolean('kallara register')
-    group_name=fields.Char('Group Name')
+    group_name=fields.Char('Group Name', required=True)
     group_president=fields.Char('Group President')
     group_secretary=fields.Char('Group Secretary')
     meeting_location=fields.Char('Meeting Location')
