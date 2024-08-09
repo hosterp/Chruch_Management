@@ -547,7 +547,7 @@
             </field>
         </record>
 
-         <record id="action_audiorium" model="ir.actions.act_window">
+         <record id="action_auditorium" model="ir.actions.act_window">
             <field name="name">Auditorium Management</field>
             <field name="res_model">auditorium.dashboard</field>
             <field name="type">ir.actions.act_window</field>
@@ -560,6 +560,6 @@
         <menuitem id="menu_auditorium" name="Auditorium" sequence="200"/>
         <menuitem id="submenu_auditorium" parent="menu_auditorium" name="Auditorium" sequence="1"/>
         <menuitem id="sub_submenu_auditorium" parent="submenu_auditorium" name="Auditorium Details" sequence="1"
-                  action="action_audiorium"/>
+                  action="action_auditorium"/>
     </data>
 </openerp>

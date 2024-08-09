@@ -1,51 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-         <record id="form_event_auditorium" model="ir.ui.view">
+        <record id="form_event_auditorium" model="ir.ui.view">
             <field name="name">Form for Auditorium</field>
             <field name="model">auditorum.fields</field>
             <field name="arch" type="xml">
 
                 <form string="Event">
-<!--                    <header>-->
-<!--                        <button name="action_completed" states="draft" string="Completed"-->
-<!--                                type="object" class="oe_highlight"/>-->
-<!--                        <button name="action_cancel" states="draft" string="Cancel"-->
-<!--                                type="object" class="oe_highlight"/>-->
-<!--                        <field name="state" widget="statusbar"-->
-<!--                               statusbar_colors='{"completed":"green","cancel":"red"}' readonly="1"/>-->
-<!--                    </header>-->
+                    <header>
+                        <header>
+                            <header>
+                                <button name="action_completed" states="draft,postpone,prepone" string="Completed"
+                                        type="object" class="oe_highlight"/>
+                                <button name="action_cancel" states="draft,postpone,prepone" string="Cancel"
+                                        type="object" class="oe_highlight"/>
+                                <button name="action_prepone" states="draft,postpone" string="Prepone" type="object"
+                                        class="oe_highlight"/>
+                                <button name="action_postpone" states="draft,prepone" string="Postpone" type="object"
+                                        class="oe_highlight"/>
+                                <field name="state" widget="statusbar"
+                                       statusbar_colors='{"completed":"green","cancel":"red","postpone":"yellow","prepone":"blue"}'
+                                       readonly="1"/>
+                            </header>
+
+                        </header>
+
+                    </header>
                     <sheet>
                         <group>
                             <group>
+                                <field name="auditorium_name"/>
                                 <field name="bookin_date"/>
-
-                                <field name="ac_or_non"/>
-                                <field name="current"/>
-                                <field name="Chair"/>
                                 <field name="event_place"/>
-                                <field name="total_amount"/>
                             </group>
                             <group>
                                 <field name="purpose"/>
-                                <field name="Generator"/>
-                                <field name="water"/>
-                                <field name="no_of_chair"/>
-                                 <field name="booking_details"/>
-
+                                <field name="booking_details"/>
                             </group>
 
                         </group>
-                        <group>
+                        <strong>
+                            <p>Extra Services</p>
+                        </strong>
+                        <group col="2">
+                            <group>
+                                <field name="ac_or_non"/>
+                                <field name="current"/>
+                                <field name="Chair"/>
+                            </group>
+                            <group>
+                                <field name="Generator"/>
+                                <field name="water"/>
+                                <field name="no_of_chair" attrs="{'invisible': [('Chair','=', False)]}"/>
+                            </group>
                         </group>
-                        <group>
+                        <notebook>
+                            <page string="Services">
+                                <field name="invoice_ids">
+                                    <tree editable="bottom">
+                                        <field name="services"/>
+                                        <field name="rent_amount"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                        <group col="2">
+                            <group>
+
+                            </group>
+                            <group>
+                                <field name="total_amount"/>
+                                <field name="advance"/>
+                                <field name="balance"/>
+                            </group>
                         </group>
 
                     </sheet>
                 </form>
             </field>
         </record>
-         <record id="tree_event_view_only_auditorium" model="ir.ui.view">
+        <record id="tree_event_view_only_auditorium" model="ir.ui.view">
             <field name="name">Form Auditorium</field>
             <field name="model">auditorum.fields</field>
             <field name="priority">30</field>
@@ -53,15 +87,14 @@
                 <tree fg_color="green:state == 'completed'" create="1">
 
                     <field name="bookin_date"/>
-<!--                    <field name="booking_details"/>-->
                     <field name="purpose"/>
-                    <field name="no_of_chair"/>
+                    <field name="advance"/>
                     <field name="total_amount"/>
                 </tree>
             </field>
         </record>
 
-         <record id="action_auditorium_form" model="ir.actions.act_window">
+        <record id="action_auditorium_form" model="ir.actions.act_window">
             <field name="name">Auditorium Form</field>
             <field name="res_model">auditorum.fields</field>
             <field name="type">ir.actions.act_window</field>

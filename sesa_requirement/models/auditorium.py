@@ -3,18 +3,31 @@ from openerp import fields, models, api
 class Auditorium(models.Model):
     _name = 'auditorum.fields'
 
-    bookin_date=fields.Char('Booking Date')
+    bookin_date=fields.Datetime('Booking Date')
     booking_details=fields.Text('Booking Details')
-    ac_or_non=fields.Boolean('AC/Non AC')
+    ac_or_non=fields.Selection([('AC','AC'),('Non AC','Non AC')],'AC/Non AC')
     Generator=fields.Boolean('Generator')
     current=fields.Boolean('Current')
     water=fields.Boolean('Water')
     Chair=fields.Boolean('Chair')
     no_of_chair=fields.Integer('Number of chairs')
     sound_sysrem=fields.Boolean('Sound System')
-    purpose=fields.Char('Purpose')
-    total_amount=fields.Float('Total Amount')
+    purpose=fields.Many2one('auditorium.purpose','Purpose')
+    total_amount=fields.Float('Total Amount',compute='_compute_total_amount')
+    advance=fields.Float('Advance Amount')
+    balance=fields.Float('Balance Amount',compute='_compute_total_amount')
+    auditorium_name=fields.Char('Auditorium Name')
     event_place = fields.Many2one('church.place', "Chruch")
+    invoice_ids=fields.One2many('auditorium.invoice','invoice_id')
+    state = fields.Selection([('draft', 'Draft'), ('completed', 'Completed'),('postpone','Postpone'),('prepone','Prepone'), ('cancel', 'Cancelled')], default='draft',
+                             string="Status")
+
+    @api.depends('invoice_ids.rent_amount')
+    def _compute_total_amount(self):
+        for record in self:
+            total = sum(invoice.rent_amount for invoice in record.invoice_ids)
+            record.total_amount = total
+            record.balance=total-record.advance
 
     @api.model
     def default_get(self, fields):
@@ -24,6 +37,21 @@ class Auditorium(models.Model):
             res['event_place'] = active_id
         return res
 
+    @api.multi
+    def action_completed(self):
+        self.state = 'completed'
+
+    @api.multi
+    def action_postpone(self):
+        self.state='postpone'
+
+    @api.multi
+    def action_prepone(self):
+        self.state='prepone'
+
+    @api.multi
+    def action_cancel(self):
+        self.state = 'cancel'
 class AuditoriumDashboard(models.Model):
     _name = 'auditorium.dashboard'
 
@@ -250,3 +278,25 @@ class ChurchDetails(models.Model):
         id = result and result[1] or False
         result = act_obj.read(cr, uid, [id], context=context)[0]
         return result
+
+class AuditoriumPurpose(models.Model):
+    _name = 'auditorium.purpose'
+    _rec_name = 'purpose'
+
+    purpose = fields.Char('Purpose')
+
+class AuditoriumServices(models.Model):
+    _name = 'auditorium.services'
+    _rec_name = 'services'
+
+    services=fields.Char('Extra services')
+
+class AuditoriumInvoice(models.Model):
+    _name = 'auditorium.invoice'
+
+    invoice_id=fields.Many2one('auditorum.fields')
+    services = fields.Many2one('auditorium.services','Extra services')
+    amount=fields.Float('Amount')
+    rent_amount=fields.Float('Rent Amount')
+
+
