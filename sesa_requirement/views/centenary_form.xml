@@ -69,7 +69,7 @@
                                        attrs="{'invisible': [('kallra_bool','!=', True)]}"/>
                                 <field name="kallara_assigned_year"
                                        attrs="{'invisible': [('kallra_bool','!=', True)]}"/>
-                                <field name="group_name" attrs="{'invisible': [('group_bool','!=', True)]}"/>
+                                <field name="group_name"/>
                                 <field name="group_president" attrs="{'invisible': [('group_bool','!=', True)]}"/>
                                 <field name="group_secretary" attrs="{'invisible': [('group_bool','!=', True)]}"/>
 

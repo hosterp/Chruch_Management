@@ -49,8 +49,8 @@ class HrEmployee(models.Model):
     work_phone=fields.Char('work_phone')
     total_members=fields.Integer('Total Members')
     members_ids=fields.One2many('family.member','head_of_family_id')
-    group_name_id=fields.Many2one(comodel_name='centenary.form')
-    group_of_family = fields.Selection(selection='_get_group_name_options')
+    group_of_family=fields.Many2one('group.model')
+    # group_of_family = fields.Selection(selection='_get_group_name_options')
     family_place=fields.Char("Place")
 
     @api.model

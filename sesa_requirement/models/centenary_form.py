@@ -54,7 +54,7 @@ class CentenaryForm(models.Model):
     kallara_fee=fields.Integer('Kallara Fees')
     house_name=fields.Char('House Name')
     kallra_bool = fields.Boolean('kallara register')
-    group_name=fields.Char('Group Name', required=True)
+    group_name=fields.Many2one('group.model',string='Group Name')
     group_president=fields.Char('Group President')
     group_secretary=fields.Char('Group Secretary')
     meeting_location=fields.Char('Meeting Location')
@@ -81,8 +81,10 @@ class CentenaryForm(models.Model):
     @api.onchange('Category')
     def _onchange_category(self):
         category = self.env['centenary.celebration'].browse(self.Category.id) if self.Category else None
+        print (category,".....................................................................")
         if category:
             if category.name == 'Baptism Register':
+                print (category.name)
                 self.baptism_bool = True
                 self.marrage_bool = False
                 self.death_bool = False
@@ -137,4 +139,8 @@ class MarrageRegisterLine(models.Model):
                                          'Has the certificate from the vicar of the concerned parish been produced?')
     place = fields.Char('Place where the marriage is to be conducted.')
     time_date = fields.Datetime('The time and date of the marriage.')
+class groupname(models.Model):
+    _name = 'group.model'
+    _rec_name = 'groupName'
 
+    groupName = fields.Char('Group Name')
