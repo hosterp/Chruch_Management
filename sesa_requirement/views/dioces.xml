@@ -8,8 +8,21 @@
                 <form>
                     <sheet>
                         <group>
-                            <field name="event_district" string="District"/>
-                            <field name="church_place" string="Church Name"/>
+                            <group>
+                                <field name="church_name"/>
+                                <field name="vicar"/>
+                                <field name="assist_vicar"/>
+                                <field name="mobile"/>
+                                <field name="email"/>
+
+                            </group>
+                            <group>
+                                <field name="bishop_name"/>
+                                <field name="address"/>
+                                <field name="event_district" string="District"/>
+                                <field name="church_place" string="Place"/>
+                            </group>
+
                         </group>
                     </sheet>
                 </form>
@@ -38,9 +51,11 @@
             <field name="model">diocese.assembly</field>
             <field name="arch" type="xml">
                 <tree search_view_id="search_med_lot_filter_diocese">
-                    <field name="name"/>
-                    <field name="event_district" string="District" group_operator="count"/>
+                    <field name="church_name"/>
+                    <field name="email"/>
+                    <field name="mobile"/>
                     <field name="church_place"/>
+                    <field name="event_district" string="District" group_operator="count"/>
                 </tree>
             </field>
         </record>
