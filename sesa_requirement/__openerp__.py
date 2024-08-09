@@ -28,6 +28,7 @@
             'views/auditorium.xml',
             'views/church_place.xml',
             'views/auditoriam_form.xml',
+            'views/dioces.xml',
 
     ],
     # 'css': [

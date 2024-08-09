@@ -8,3 +8,4 @@ import centenary_celebrations
 import centenary_form
 import family_member
 import auditorium
+import diocese_assembly
