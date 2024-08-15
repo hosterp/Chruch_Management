@@ -36,7 +36,7 @@
                                                                     <center>
                                                                         <button class="center-align" type="object"
                                                                                 name="call_event"
-                                                                                string="Add/View Event">View Event
+                                                                                string="Add/View Event">Church
                                                                             Details
                                                                         </button>
                                                                     </center>
@@ -61,12 +61,13 @@
             <field name="name">event.dashboard.place.form.view</field>
             <field name="model">event.place</field>
             <field name="arch" type="xml">
-                <form>
+                <form >
                     <group>
                         <field name="date"/>
+                        <field name="event_district"  string="District"/>
                         <field name="place"/>
-                        <field name="event_district"/>
-                        <field name="district_place_count" string="Count"/>
+                        <field name="church_place_name" />
+<!--                        <field name="district_place_count" string="Count" />-->
                     </group>
                 </form>
             </field>

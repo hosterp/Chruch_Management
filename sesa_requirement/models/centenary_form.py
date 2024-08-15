@@ -144,3 +144,4 @@ class groupname(models.Model):
     _rec_name = 'groupName'
 
     groupName = fields.Char('Group Name')
+

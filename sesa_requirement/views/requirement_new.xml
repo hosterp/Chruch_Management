@@ -212,23 +212,23 @@
             <field name="model">event.event</field>
             <field name="priority">30</field>
             <field name="arch" type="xml">
-                <tree fg_color="green:state == 'completed'" create="0">
-
-                    <field name="user"/>
-                    <field name="reporting_incharge"/>
-                    <field name="event_category"/>
-                    <field name="event_type"/>
-                    <field name="date"/>
+                <tree fg_color="green:state == 'completed'" create="1">
+                        <field name="event_district" string="District"/>
+<!--                    <field name="user"/>-->
                     <field name="event_place"/>
-                    <field name="total_attendees"/>
-                    <field name="total_devotees_attended"/>
+                    <field name="family_church"/>
+<!--                    <field name="event_type"/>-->
+<!--                    <field name="date"/>-->
+<!--                    <field name="event_place"/>-->
+<!--                    <field name="total_attendees"/>-->
+<!--                    <field name="total_devotees_attended"/>-->
                     <!--                    <field name="advance" />-->
                     <!--                    <field name="expense" />-->
                     <!--                    <field name="rem_expense" />-->
                     <!--                    <field name="balance" />-->
-                    <field name="desc"/>
-                    <field name="remark"/>
-                    <field name="state"/>
+<!--                    <field name="desc"/>-->
+<!--                    <field name="remark"/>-->
+<!--                    <field name="state"/>-->
                 </tree>
             </field>
         </record>
@@ -249,28 +249,31 @@
                     </header>
                     <sheet>
                         <group>
-                            <field name="date"/>
+<!--                            <field name="date"/>-->
+                            <field name="event_district"/>
+                            <field name="event_place"/>
+                            <field name="family_church"/>
                         </group>
-                        <group>
-                            <group>
-                                <field name="user"/>
-                                <field name="event_category" widget="radio"/>
+<!--                        <group>-->
+<!--                            <group>-->
+<!--                                <field name="user"/>-->
+<!--                                <field name="event_category" widget="radio"/>-->
 
 
-                                <!--                                <field name="event_category" widget="radio"/>-->
+<!--                                &lt;!&ndash;                                <field name="event_category" widget="radio"/>&ndash;&gt;-->
 
 
-                                <field name="contact_details" string="Phone Number"/>
-                            </group>
-                            <group>
-                                <field name="reporting_incharge"/>
-                                <field name="event_type"/>
-                                <field name="event_district"/>
-                                <field name="event_place" string="Samithi"/>
-                                <field name="total_attendees" invisible="1"/>
-                                <field name="attachment" widget="many2many_binary" string="Attachment(s)"/>
-                                <!--                                  <group><field name="time"></field></group>-->
-                            </group>
+<!--                                <field name="contact_details" string="Phone Number"/>-->
+<!--                            </group>-->
+<!--                            <group>-->
+<!--                                <field name="reporting_incharge"/>-->
+<!--                                <field name="event_type"/>-->
+<!--                                <field name="event_district"/>-->
+<!--                                <field name="event_place" string="Samithi"/>-->
+<!--                                <field name="total_attendees" invisible="1"/>-->
+<!--                                <field name="attachment" widget="many2many_binary" string="Attachment(s)"/>-->
+<!--                                &lt;!&ndash;                                  <group><field name="time"></field></group>&ndash;&gt;-->
+<!--                            </group>-->
 
 
                             <!--                            <field name="advance" />-->
@@ -282,30 +285,30 @@
                             <!--                            <group>-->
                             <!--                                <field name="rem_expense" />-->
                             <!--                            </group>-->
-                        </group>
-                        <group col="3">
-                            <group>
-                                <field name="male"/>
-                            </group>
-                            <group>
-                                <field name="female"/>
-                            </group>
-                            <group>
-                                <field name="youth"/>
-                            </group>
-                        </group>
+<!--                        </group>-->
+<!--                        <group col="3">-->
+<!--                            <group>-->
+<!--                                <field name="male"/>-->
+<!--                            </group>-->
+<!--                            <group>-->
+<!--                                <field name="female"/>-->
+<!--                            </group>-->
+<!--                            <group>-->
+<!--                                <field name="youth"/>-->
+<!--                            </group>-->
+<!--                        </group>-->
 
-                        <group>
-                            <field name="total_devotees_attended"/>
-                            <field name="revived_samithi"/>
-                            <field name="guru" string="Guru"
-                                   attrs="{'invisible': [('event_category', '!=', 'balvikas')]}"/>
-                        </group>
-                        <group>
-                            <!--                            <field name="balance" />-->
-                            <field name="desc"/>
-                            <field name="remark"/>
-                        </group>
+<!--                        <group>-->
+<!--                            <field name="total_devotees_attended"/>-->
+<!--                            <field name="revived_samithi"/>-->
+<!--                            <field name="guru" string="Guru"-->
+<!--                                   attrs="{'invisible': [('event_category', '!=', 'balvikas')]}"/>-->
+<!--                        </group>-->
+<!--                        <group>-->
+<!--                            &lt;!&ndash;                            <field name="balance" />&ndash;&gt;-->
+<!--                            <field name="desc"/>-->
+<!--                            <field name="remark"/>-->
+<!--                        </group>-->
                         <group>
                             <!--                            <field name="attachment" widget="many2many_binary" string="Attachment(s)"/>-->
                             <!--                            <label class="col-form-label" for="attachment">Attachment(s)</label>-->

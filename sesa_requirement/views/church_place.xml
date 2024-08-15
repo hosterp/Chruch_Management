@@ -36,7 +36,7 @@
                                                                     <center>
                                                                         <button class="center-align" type="object"
                                                                                 name="call_event"
-                                                                                string="Add/View Event">View
+                                                                                string="Add/View Event">Auditorium Details
                                                                         </button>
                                                                     </center>
                                                                 </div>
@@ -63,8 +63,9 @@
                 <form>
                     <group>
 <!--                        <field name="date"/>-->
+                        <field name="event_district" string="Distict"/>
                         <field name="church_place"/>
-                        <field name="event_district"/>
+                        <field name="Church_Auditorium_Name"/>
 <!--                        <field name="district_place_count" string="Count"/>-->
                     </group>
                 </form>

@@ -31,7 +31,8 @@
                             <group>
                                 <field name="auditorium_name"/>
                                 <field name="bookin_date"/>
-                                <field name="event_place"/>
+                                <field name="event_district"/>
+                                <field name="event_place" String="Place"/>
                             </group>
                             <group>
                                 <field name="purpose"/>
@@ -86,10 +87,10 @@
             <field name="arch" type="xml">
                 <tree fg_color="green:state == 'completed'" create="1">
 
-                    <field name="bookin_date"/>
-                    <field name="purpose"/>
-                    <field name="advance"/>
-                    <field name="total_amount"/>
+                    <field name="event_district" string="District"/>
+                    <field name="event_place" string="Place"/>
+                    <field name="auditorium_name"/>
+<!--                    <field name="total_amount"/>-->
                 </tree>
             </field>
         </record>
