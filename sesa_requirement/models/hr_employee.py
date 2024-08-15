@@ -46,10 +46,12 @@ class HrEmployee(models.Model):
     position=fields.Char('Position')
     address=fields.Text('Address')
     # group_of_family=fields.Many2one()
+    work_phone=fields.Char('work_phone')
     total_members=fields.Integer('Total Members')
     members_ids=fields.One2many('family.member','head_of_family_id')
-    group_name_id=fields.Many2one(comodel_name='centenary.form')
-    group_of_family = fields.Selection(selection='_get_group_name_options')
+    group_of_family=fields.Many2one('group.model')
+    # group_of_family = fields.Selection(selection='_get_group_name_options')
+    family_church=fields.Many2one('family_church_name.model', string='Church Name')
 
     @api.model
     def _get_group_name_options(self):
@@ -73,3 +75,8 @@ class HrEmployee(models.Model):
         return {'value': {'street': '', 'street2': '', 'city': '', 'state_id': '', 'zip': '', 'country_id': ''}}
 
 
+class family_church_model(models.Model):
+    _name = 'family_church_name.model'
+    _rec_name = 'family_name_church'
+
+    family_name_church = fields.Char('Church Name')

@@ -16,11 +16,31 @@ class Auditorium(models.Model):
     total_amount=fields.Float('Total Amount',compute='_compute_total_amount')
     advance=fields.Float('Advance Amount')
     balance=fields.Float('Balance Amount',compute='_compute_total_amount')
-    auditorium_name=fields.Char('Auditorium Name')
+    auditorium_name=fields.Many2one('church.auditorium.name','Auditorium Name')
     event_place = fields.Many2one('church.place', "Chruch")
     invoice_ids=fields.One2many('auditorium.invoice','invoice_id')
     state = fields.Selection([('draft', 'Draft'), ('completed', 'Completed'),('postpone','Postpone'),('prepone','Prepone'), ('cancel', 'Cancelled')], default='draft',
                              string="Status")
+    event_district = fields.Selection([('AL', 'ALAPPUZHA'),
+                                       ('ER', 'ERNAKULAM'),
+                                       ('ID', 'IDUKKI'),
+                                       ('KN', 'KANNUR'),
+                                       ('KS', 'KASARAGOD'),
+                                       ('KL', 'KOLLAM'),
+                                       ('KT', 'KOTTAYAM'),
+                                       ('KZ', 'KOZHIKODE'),
+                                       ('MA', 'MALAPPURAM'),
+                                       ('PL', 'PALAKKAD'),
+                                       ('PT', 'PATHANAMTHITTA'),
+                                       ('TV', 'THIRUVANANTHAPURAM'),
+                                       ('TS', 'THRISSUR'),
+                                       ('WA', 'WAYANAD')])
+
+    @api.onchange('event_district')
+    def onchange_event_district(self):
+        for record in self:
+            if record.event_district:
+                return {'domain': {'event_place': [('event_district', '=', record.event_district)]}}
 
     @api.depends('invoice_ids.rent_amount')
     def _compute_total_amount(self):
@@ -256,6 +276,7 @@ class ChurchDetails(models.Model):
     _rec_name = 'church_place'
 
     church_place = fields.Char('Place')
+    Church_Auditorium_Name = fields.Many2one('church.auditorium.name','Auditorium Name')
     event_district = fields.Selection([('AL', 'ALAPPUZHA'),
                                        ('ER', 'ERNAKULAM'),
                                        ('ID', 'IDUKKI'),
@@ -298,5 +319,11 @@ class AuditoriumInvoice(models.Model):
     services = fields.Many2one('auditorium.services','Extra services')
     amount=fields.Float('Amount')
     rent_amount=fields.Float('Rent Amount')
+
+class Auditorium_name_model(models.Model):
+    _name = 'church.auditorium.name'
+    _rec_name = 'auditorium_name_church'
+
+    auditorium_name_church = fields.Char('Auditorium Name')
 
 

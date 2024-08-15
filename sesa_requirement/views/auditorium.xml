@@ -39,7 +39,7 @@
                                                                         <button class="your_custom_button"
                                                                                 style="margin: 39px 0px 0px -12px;"
                                                                                 type="object" name="call_place"
-                                                                                string="View">View Church Details
+                                                                                string="View">Auditorium Details
                                                                         </button>
                                                                     </left>
                                                                 </div>
@@ -72,7 +72,7 @@
                                                                     <left>
                                                                         <button class="your_custom_button" type="object"
                                                                                 style="margin: 39px 0px 0px -12px;"
-                                                                                name="call_kollam" string="View">View Church Details
+                                                                                name="call_kollam" string="View">Auditorium Details
                                                                         </button>
                                                                     </left>
                                                                 </div>
@@ -105,7 +105,7 @@
                                                                     <left>
                                                                         <button class="your_custom_button" type="object"
                                                                                 style="margin: 39px 0px 0px -12px;"
-                                                                                name="call_pta" string="View">View Church Details
+                                                                                name="call_pta" string="View">Auditorium Details
                                                                         </button>
                                                                     </left>
                                                                 </div>
@@ -139,7 +139,7 @@
                                                                     <left>
                                                                         <button class="your_custom_button" type="object"
                                                                                 style="margin: 39px 0px 0px -12px;"
-                                                                                name="call_al" string="View">View Church Details
+                                                                                name="call_al" string="View">Auditorium Details
                                                                         </button>
                                                                     </left>
                                                                 </div>
@@ -174,7 +174,7 @@
                                                                     <left>
                                                                         <button class="your_custom_button" type="object"
                                                                                 style="margin: 39px 0px 0px -12px;"
-                                                                                name="call_kt" string="View">View Church Details
+                                                                                name="call_kt" string="View">Auditorium Details
                                                                         </button>
                                                                     </left>
                                                                 </div>
@@ -210,7 +210,7 @@
                                                                     <left>
                                                                         <button class="your_custom_button" type="object"
                                                                                 style="margin: 39px 0px 0px -12px;"
-                                                                                name="call_id" string="View">View Church Details
+                                                                                name="call_id" string="View">Auditorium Details
                                                                         </button>
                                                                     </left>
                                                                 </div>
@@ -243,7 +243,7 @@
                                                                     <left>
                                                                         <button class="your_custom_button" type="object"
                                                                                 style="margin: 39px 0px 0px -12px;"
-                                                                                name="call_er" string="View">View Church Details
+                                                                                name="call_er" string="View">Auditorium Details
                                                                         </button>
                                                                     </left>
                                                                 </div>
@@ -311,7 +311,7 @@
                                                                     <left>
                                                                         <button class="your_custom_button" type="object"
                                                                                 style="margin: 39px 0px 0px -12px;"
-                                                                                name="call_ts" string="View">View Church Details
+                                                                                name="call_ts" string="View">Auditorium Details
                                                                         </button>
                                                                     </left>
                                                                 </div>
@@ -344,7 +344,7 @@
                                                                     <left>
                                                                         <button class="your_custom_button" type="object"
                                                                                 style="margin: 39px 0px 0px -12px;"
-                                                                                name="call_pl" string="View">View Church Details
+                                                                                name="call_pl" string="View">Auditorium Details
                                                                         </button>
                                                                     </left>
                                                                 </div>
@@ -381,7 +381,7 @@
                                                                     <left>
                                                                         <button class="your_custom_button" type="object"
                                                                                 style="margin: 39px 0px 0px -12px;"
-                                                                                name="call_ma" string="View">View Church Details
+                                                                                name="call_ma" string="View">Auditorium Details
                                                                         </button>
                                                                     </left>
                                                                 </div>
@@ -414,7 +414,7 @@
                                                                     <left>
                                                                         <button class="your_custom_button" type="object"
                                                                                 style="margin: 39px 0px 0px -12px;"
-                                                                                name="call_kz" string="View">View Church Details
+                                                                                name="call_kz" string="View">Auditorium Details
                                                                         </button>
                                                                     </left>
                                                                 </div>
@@ -447,7 +447,7 @@
                                                                     <left>
                                                                         <button class="your_custom_button" type="object"
                                                                                 style="margin: 39px 0px 0px -12px;"
-                                                                                name="call_wa" string="View">View Church Details
+                                                                                name="call_wa" string="View">Auditorium Details
                                                                         </button>
                                                                     </left>
                                                                 </div>
@@ -480,7 +480,7 @@
                                                                     <left>
                                                                         <button class="your_custom_button" type="object"
                                                                                 style="margin: 39px 0px 0px -12px;"
-                                                                                name="call_kn" string="View">View Church Details
+                                                                                name="call_kn" string="View">Auditorium Details
                                                                         </button>
                                                                     </left>
                                                                 </div>
@@ -513,7 +513,7 @@
                                                                     <left>
                                                                         <button class="your_custom_button" type="object"
                                                                                 style="margin: 39px 0px 0px -12px;"
-                                                                                name="call_ks" string="View">View Church Details
+                                                                                name="call_ks" string="View">Auditorium Details
                                                                         </button>
                                                                     </left>
                                                                 </div>

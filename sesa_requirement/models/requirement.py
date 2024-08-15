@@ -28,6 +28,7 @@ class Event(models.Model):
                              string="Status")
     user = fields.Many2one('hr.employee')
     reporting_incharge = fields.Many2one('hr.employee',string="Reporting In-Charge")
+    family_church = fields.Many2one('family_church_name.model', string='Church Name')
     event_place = fields.Many2one('event.place', "Place")
     # event_district = fields.Many2one('event.district',"District")
     event_district = fields.Selection([('AL', 'ALAPPUZHA'),
@@ -158,6 +159,7 @@ class Place(models.Model):
     _rec_name = 'place'
 
     place = fields.Char('Place')
+    church_place_name = fields.Many2one('family_church_name.model',string='Church Name')
     event_district = fields.Selection([('AL', 'ALAPPUZHA'),
                                        ('ER', 'ERNAKULAM'),
                                        ('ID', 'IDUKKI'),
@@ -247,3 +249,5 @@ class Place(models.Model):
         id = result and result[1] or False
         result = act_obj.read(cr, uid, [id], context=context)[0]
         return result
+
+

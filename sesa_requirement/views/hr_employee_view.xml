@@ -17,7 +17,7 @@
                     <group>
                         <group>
                             <field name="event_district" string="District"/>
-                            <field name="event_place" string="Church Name"/>
+                            <field name="event_place" string="Place"/>
 <!--                            <field name="work_phone" string="Mobile No"/>-->
                             <field name="address" string="Address"/>
 <!--                            <field name="relation_of_hof" string="Relation"/>-->
@@ -25,6 +25,7 @@
                             <field name="mobile_phone" string="Alternative Mobile No" invisible="1"/>
                         </group>
                         <group>
+                            <field name="family_church" string="Church"/>
                             <field name="total_members" string="Total Members"/>
                             <field name="group_of_family" string="Group of Family"/>
                             <field name="work_email" widget="email" string="Email ID"/>
@@ -42,6 +43,8 @@
                                     <field name="date_of_birth"/>
                                     <field name="age"/>
                                     <field name="gender"/>
+                                    <field class="oe_phone" name="phone_no" />
+                                    <field name="email"/>
                                     <field name="relation"/>
                                 </tree>
                             </field>
@@ -97,7 +100,6 @@
                 </xpath>
             </field>
         </record>
-
         <record model="ir.ui.view" id="search_med_lot_filter_devotees">
             <field name="name">Devotees Filter Search</field>
             <field name="model">hr.employee</field>
@@ -122,7 +124,7 @@
                     <field name="event_place" string="Place"/>
                     <field name="work_phone" string="Mobile No"/>
                     <field name="work_email" widget="email" string="Email ID"/>
-                    <field name="position" string="Position"/>
+                    <field name="position" string="Position" invisible="1"/>
                 </tree>
             </field>
         </record>
