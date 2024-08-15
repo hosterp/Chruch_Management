@@ -250,7 +250,7 @@
                     <sheet>
                         <group>
 <!--                            <field name="date"/>-->
-                            <field name="event_district"/>
+                            <field name="event_district" string="District"/>
                             <field name="event_place"/>
                             <field name="family_church"/>
                         </group>
